@@ -6,10 +6,10 @@ import Layout from '../../components/layout'
 import NoComments from '../../components/post/NoComments'
 import Loading from '../../components/loading'
 import Head from 'next/head'
-import {useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 export async function getStaticPaths() {
-    
-    
+
+
     const { data } = await supabase
         .from('feed')
         .select('*')
@@ -42,8 +42,8 @@ export async function getStaticProps(selectedPost) {
 function PostPage({ post }) {
     const router = useRouter()
     if (router.isFallback) {
-        return <Loading/>
-      }
+        return <Loading />
+    }
     return (
         <>
             <Head>
