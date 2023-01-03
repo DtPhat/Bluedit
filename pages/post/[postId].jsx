@@ -3,9 +3,13 @@ import Vote from '../../components/post/Vote'
 import Actions from '../../components/post/Actions'
 import Comment from '../../components/post/Comment'
 import Layout from '../../components/layout'
-import NoComments from '../../components/post/NoComments.jsx'
+import NoComments from '../../components/post/NoComments'
+import Loading from '../../components/loading'
 import Head from 'next/head'
+import {useRouter} from 'next/navigation'
 export async function getStaticPaths() {
+    
+    
     const { data } = await supabase
         .from('feed')
         .select('*')
@@ -18,7 +22,7 @@ export async function getStaticPaths() {
     })
     return {
         paths,
-        fallback: false
+        fallback: true
     }
 }
 export async function getStaticProps(selectedPost) {
@@ -36,6 +40,10 @@ export async function getStaticProps(selectedPost) {
 }
 
 function PostPage({ post }) {
+    const router = useRouter()
+    if (router.isFallback) {
+        return <Loading/>
+      }
     return (
         <>
             <Head>

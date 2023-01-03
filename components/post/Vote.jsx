@@ -7,11 +7,21 @@ function Vote({ upvotes, downvotes }) {
     let votes = upvotes - downvotes
     if (downvoted) votes--
     if (upvoted) votes++
-    const upvoteHandler = () => {
+    const upvoteHandler = (e) => {
+        e.preventDefault()
+        if (upvoted) {
+            setUpvoted(false)
+            return
+        }
         setUpvoted(true)
         setDownvoted(false)
     }
-    const downvoteHandler = () => {
+    const downvoteHandler = (e) => {
+        e.preventDefault()
+        if (downvoted) {
+            setDownvoted(false)
+            return
+        }
         setUpvoted(false)
         setDownvoted(true)
     }
@@ -22,7 +32,7 @@ function Vote({ upvotes, downvotes }) {
             </div>
             <span className='font-bold text-sm'>{votes}</span>
             <div onClick={downvoteHandler}>
-                <DownvoteIcon style={`${downvoted ? 'text-blue-600' : ''}`}/>
+                <DownvoteIcon style={`${downvoted ? 'text-blue-600' : ''}`} />
             </div>
         </div>
     );
