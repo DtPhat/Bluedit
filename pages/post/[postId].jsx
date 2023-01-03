@@ -6,7 +6,7 @@ import Layout from '../../components/layout'
 import NoComments from '../../components/post/NoComments'
 import Loading from '../../components/loading'
 import Head from 'next/head'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/router'
 export async function getStaticPaths() {
 
 

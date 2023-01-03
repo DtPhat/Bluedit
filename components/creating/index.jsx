@@ -1,5 +1,5 @@
 import { supabase } from '../../client'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 export default function NewPost() {
