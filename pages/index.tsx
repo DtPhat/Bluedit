@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Head>
-          <title>Bluedit - Dive into anything</title>
+          <title>Bluedit - Delve into anything</title>
       </Head>
       <Header />
       <div className='pt-10'>

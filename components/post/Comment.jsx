@@ -1,6 +1,6 @@
 function Comment() {
     return (
-            <div className='flex flex-col border border-gray-reddit pb-4 relative rounded focus-within:border-white mr-[2.5rem]'>
+            <div className='flex flex-col border-2 border-grayblack-reddit pb-4 relative rounded focus-within:border-white-reddit'>
                 <textarea
                     className='rounded bg-black-reddit py-2 px-4 outline-none group-focus:bg-white'
                     rows={7}

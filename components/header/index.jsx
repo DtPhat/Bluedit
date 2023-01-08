@@ -17,11 +17,11 @@ import Link from 'next/link'
 
 export default function Header() {
     return (
-        <div className='fixed inset:0 w-full flex h-13 p-1 px-3 space-x-3 items-center bg-black-reddit text-white-reddit border-b border-grayblack-reddit overflow-hidden'>
+        <div className='fixed inset:0 z-10 w-full flex h-13 p-1 px-3 space-x-3 items-center bg-black-reddit text-white-reddit border-b border-grayblack-reddit overflow-hidden'>
             <Link href='/'>
                 <div className='flex space-x-2 min-w-[33px]'>
-                    <Image src='/reddit-icon.svg' width={33} height={33} />
-                    <Image className='hidden lg:block bg' src='/reddit-text.svg' width={62} height={62} />
+                    <Image src='/reddit-icon.svg' width={33} height={33} alt='blueddit-icon'/>
+                    <Image className='hidden lg:block bg' src='/reddit-text.svg' width={62} height={62} alt='blueddit-text' />
                 </div>
             </Link>
             <div className='flex items-center w-18 lg:w-64 border border-transparent hover:border-gray-reddit'>
@@ -50,7 +50,10 @@ export default function Header() {
                 <IconItem Icon={MegaphoneIcon} />
             </div>
             <div className='flex lg:min-w-[14rem] items-center font-medium border border-transparent hover:border-gray-reddit space-x-2'>
-                <img src='https://i.ibb.co/BBkjSKb/Pixel-Phast.jpg' className='h-9 w-9 min-w-[36px] object-cover p-1 rounded-full' />
+                <img
+                    src='https://i.ibb.co/BBkjSKb/Pixel-Phast.jpg'
+                    className='h-9 w-9 min-w-[36px] object-cover p-1 rounded-full'
+                    alt='avatar' />
                 <div className='text-xs hidden md:flex flex-col'>
                     <span>Dotipha</span>
                     <span>🌸10 karma</span>

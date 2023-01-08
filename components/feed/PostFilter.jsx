@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/24/solid'
 function PostFilter() {
     return (
-        <div className="border border-gray-reddit font-semibold p-3 flex items-center space-x-4 rounded bg-black-reddit">
+        <div className="border-2 border-grayblack-reddit font-semibold p-3 flex items-center space-x-4 rounded bg-black-reddit">
             <div className='flex space-x-1 bg-grayblack-reddit rounded-3xl p-1'>
                 <FireIcon className='w-6 h-6' />
                 <span className='pr-2'>Hot</span>
