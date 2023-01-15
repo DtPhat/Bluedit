@@ -11,13 +11,13 @@ function About() {
         router.push('/new')
     }
     return (
-        <div className="w-80 flex flex-col p-3 pb-3 border-2 border-grayblack-reddit rounded space-y-4 bg-black-reddit">
+        <div className="max-w-[20rem] flex flex-col p-3 pb-3 border-2 border-grayblack-reddit rounded space-y-4 bg-black-reddit">
             <div className="flex justify-between text-gray-500 font-medium">
                 <span>About Community</span>
                 <EllipsisHorizontalIcon className='w-7 h-7' />
             </div>
             <div className='pt-2'>
-                r/Dotipha is the place I created for cloning a subreddit with Nextjs, TaildwindCSS and Supabase.
+                r/Bluedit is the place I created for cloning a subreddit with Nextjs, TaildwindCSS and Supabase.
             </div>
             <div className='flex items-center gap-x-2 border-b pb-4 border-gray-500'>
                 <CalendarDaysIcon className='w-6 h-6' />
