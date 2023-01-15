@@ -54,11 +54,11 @@ function PostPage({ post }) {
                     <Post {...post} />
                     <div className='bg-black-reddit px-[2.5rem]'>
                         <div className='py-3'>
-                            <span className='text-sm'>Comment as Blueditor</span>
+                            <span className='text-sm'>Comment as <span className='text-blue-400 cursor-pointer'>Blueditor</span></span>
                             <Comment />
                         </div>
                         <div className='border-b-2 border-grayblack-reddit pb-1'>
-                            <span className='text-sm'>Sort By: Best</span>
+                            <span className='text-sm text-blue-400'>Sort By: Best</span>
                         </div>
                         <div>
                             <NoComments />

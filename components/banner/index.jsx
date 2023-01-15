@@ -24,9 +24,9 @@ function Banner() {
                     <BellIcon className='w-8 h-8 border rounded-full p-1 mb-5 cursor-pointer' />
                 </div>
                 <div className='space-x-4'>
-                    <span className='border-b-4 px-2'>Posts</span>
-                    <span className='text-gray-500'>Rules</span>
-                    <span className='text-gray-500'>Discord Server</span>
+                    <button className='border-b-4 px-2'>Posts</button>
+                    <button className='text-gray-500'>Rules</button>
+                    <button className='text-gray-500'>Discord Server</button>
                 </div>
             </div>
         </div>
