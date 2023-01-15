@@ -11,7 +11,7 @@ function About() {
         router.push('/new')
     }
     return (
-        <div className="max-w-[20rem] flex flex-col p-3 pb-3 border-2 border-grayblack-reddit rounded space-y-4 bg-black-reddit">
+        <div className="max-w-[20rem] flex flex-col p-3 border-2 border-grayblack-reddit rounded space-y-4 bg-black-reddit">
             <div className="flex justify-between text-gray-500 font-medium">
                 <span>About Community</span>
                 <EllipsisHorizontalIcon className='w-7 h-7' />

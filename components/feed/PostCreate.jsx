@@ -2,7 +2,7 @@ import { PhotoIcon, LinkIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link';
 function CreatePost() {
     return (
-        <div className="border-2 border-grayblack-reddit px-3 py-1 flex items-center space-x-4 rounded bg-black-reddit">
+        <div className="border-2 border-grayblack-reddit px-3 py-1 flex items-center space-x-4 rounded bg-black-reddit cursor-pointer">
             <img src="https://i.ibb.co/BBkjSKb/Pixel-Phast.jpg" alt=""
                 className="w-12 h-12 rounded-full object-cover"
             />

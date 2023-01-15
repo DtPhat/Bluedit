@@ -24,7 +24,7 @@ export default function Header() {
                     <Image className='hidden lg:block bg' src='/reddit-text.svg' width={62} height={62} alt='blueddit-text' />
                 </div>
             </Link>
-            <div className='flex items-center w-18 lg:w-64 border border-transparent hover:border-gray-reddit'>
+            <div className='flex items-center w-18 lg:w-64 border border-transparent hover:border-gray-reddit cursor-pointer'>
                 <IconItem Icon={HomeIcon} />
                 <span className='font-normal hidden lg:block'>Home</span>
                 <div className='flex flex-1 justify-end pr-2'>
@@ -49,7 +49,7 @@ export default function Header() {
                 <Link href='/new'><IconItem Icon={PlusIcon} /></Link>
                 <IconItem Icon={MegaphoneIcon} />
             </div>
-            <div className='flex lg:min-w-[14rem] items-center font-medium border border-transparent hover:border-gray-reddit space-x-2'>
+            <div className='flex lg:min-w-[14rem] items-center font-medium border border-transparent hover:border-gray-reddit space-x-2 cursor-pointer'>
                 <img
                     src='https://i.ibb.co/BBkjSKb/Pixel-Phast.jpg'
                     className='h-9 w-9 min-w-[36px] object-cover p-1 rounded-full'

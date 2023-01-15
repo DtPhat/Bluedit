@@ -19,9 +19,8 @@ function BackToTop() {
     }
     return (
         <button
-            className={`fixed z-10 bottom-2 rounded-full bg-white-reddit text-black-reddit font-semibold px-4 py-1 ${visible ? 'block' : 'none'}`}
-            onClick={scrollToTop}
-            style={{visibility: visible?'block':'hidden'}}>
+            className={`fixed z-10 bottom-2 rounded-full bg-white-reddit text-black font-semibold px-4 py-1 ${visible ? 'block' : 'hidden'}`}
+            onClick={scrollToTop}>
             Back to Top
         </button>
     );
