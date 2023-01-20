@@ -1,10 +1,14 @@
-import { PhotoIcon, LinkIcon } from '@heroicons/react/24/solid'
+import { PhotoIcon, LinkIcon, UserIcon } from '@heroicons/react/24/solid'
+import { useContext } from 'react';
+import { RedditContext } from '../../context/RedditContext';
 import Link from 'next/link';
 function CreatePost() {
+    const {currentUser} = useContext(RedditContext)
     return (
         <div className="border-2 border-grayblack-reddit px-3 py-1 flex items-center space-x-4 rounded bg-black-reddit cursor-pointer">
-            <img src="https://i.ibb.co/BBkjSKb/Pixel-Phast.jpg" alt=""
+            <img src={currentUser?currentUser.user_metadata.avatar_url:"https://www.redditstatic.com/avatars/avatar_default_02_545452.png"} alt="avatar"
                 className="w-12 h-12 rounded-full object-cover"
+                width={48}
             />
             <Link
                 href='/new'

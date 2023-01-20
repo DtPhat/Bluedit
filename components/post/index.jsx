@@ -3,9 +3,9 @@ import Actions from './Actions'
 import { supabase } from '../../client'
 import { useState, useEffect } from 'react'
 import Loading from '../loading';
-function Post({ id, title, author, content, type, upvotes, downvotes, inserted_at}) {
+function Post({ id, title, author, content, type, upvotes, downvotes, inserted_at }) {
     const [image, setImage] = useState("")
-    const [isLoading, setIsLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         type == "image" && downloadImage(content)
 
@@ -20,7 +20,7 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
         } catch (error) {
             console.log('Error downloading image: ', error)
         } finally {
-            setIsLoading(false)
+            setLoading(false)
         }
     }
     return (
@@ -34,7 +34,7 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                         className="object-cover w-[20px] h-[20px] rounded-full" />
                     <span
                         className='text-white-reddit font-bold hover:border-b'
-                        onClick={(e)=>e.preventDefault()}>
+                        onClick={(e) => e.preventDefault()}>
                         r/Bluedit
                     </span>
                     <span className='text-gray-reddit'>
@@ -47,12 +47,15 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                 }
                 {type == "image" &&
                     <div className='flex items-center justify-center bg-grayblack-reddit min-h-[20rem]'>
-                        {isLoading ?
+                        {loading ?
                             <Loading /> :
-                            <img
-                                className='max-h-[32rem] pr-[1px]'
-                                src={image}
-                                alt="not-found" />
+                            <a href={image} target='_blank'>
+                                <img
+                                    className='max-h-[32rem] pr-[1px]'
+                                    src={image}
+                                    alt="not-found"
+                                />
+                            </a>
                         }
                     </div>
                 }
@@ -77,18 +80,18 @@ export const showTime = (inserted_at) => {
     const today = new Date();
     const insertedDay = new Date(inserted_at)
     const timediff = today.getTime() - insertedDay.getTime();
-    const daydiff = Math.round(timediff/(1000 * 3600 * 24))
-    const hourdiff = Math.round(timediff/(1000 * 3600))
-    const minutediff = Math.round(timediff/(1000*60))
-    const seconddiff = Math.round(timediff/(1000))
-    if(daydiff > 0){
-        return `Posted ${daydiff} day${daydiff===1?'':'s'} ago`
-    } else if(hourdiff > 0){
-        return `Posted ${hourdiff} hour${hourdiff===1?'':'s'} ago`
-    } else if(minutediff > 0){
-        return `Posted ${minutediff} minute${minutediff===1?'':'s'} ago`
-    } else{
-        return `Posted ${seconddiff} second${seconddiff===1?'':'s'} ago`
+    const daydiff = Math.round(timediff / (1000 * 3600 * 24))
+    const hourdiff = Math.round(timediff / (1000 * 3600))
+    const minutediff = Math.round(timediff / (1000 * 60))
+    const seconddiff = Math.round(timediff / (1000))
+    if (daydiff > 0) {
+        return `Posted ${daydiff} day${daydiff === 1 ? '' : 's'} ago`
+    } else if (hourdiff > 0) {
+        return `Posted ${hourdiff} hour${hourdiff === 1 ? '' : 's'} ago`
+    } else if (minutediff > 0) {
+        return `Posted ${minutediff} minute${minutediff === 1 ? '' : 's'} ago`
+    } else {
+        return `Posted ${seconddiff} second${seconddiff === 1 ? '' : 's'} ago`
     }
 }
 

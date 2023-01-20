@@ -1,16 +1,18 @@
 import { supabase } from '../../client'
 import { useRouter } from 'next/router'
-import { useState, useRef } from 'react'
+import { useState, useRef, useContext } from 'react'
+import { RedditContext } from '../../context/RedditContext'
 import { ChevronDownIcon, DocumentTextIcon, PhotoIcon, LinkIcon, Bars3CenterLeftIcon, MicrophoneIcon } from '@heroicons/react/24/solid'
 export default function NewPost() {
+    const {currentUser} = useContext(RedditContext)
     const router = useRouter()
     const [type, setType] = useState("text")
-    const [newPost, setNewtPost] = useState({ title: "", author: "Bluediter", content: "" })
+    const [newPost, setNewtPost] = useState({ title: "", author: currentUser?currentUser.user_metadata.full_name:"Blueditor", content: "" })
     const [imgUrl, setImgUrl] = useState("")
     const { title, author, content } = newPost
     const getFiles = useRef()
     async function createPost() {
-        if (content === "") return
+        if (!content) return
         await supabase
             .from('feed')
             .insert([
@@ -19,11 +21,13 @@ export default function NewPost() {
             .single()
         router.push('/')
     }
+    
+    
     const handleImage = async (e) => {
-        const file= e.target.files[0]
+        const file = e.target.files[0]
         setImgUrl(URL.createObjectURL(file))
         const filePath = file.name
-        setNewtPost({ ...newPost, content: filePath})
+        setNewtPost({ ...newPost, content: filePath })
         let { error: uploadError } = await supabase.storage
             .from('post-images')
             .upload(filePath, file, { upsert: true })
@@ -37,12 +41,12 @@ export default function NewPost() {
             <div className='max-w-7xl w-full space-y-4'>
                 <h1 className='pb-3 border-b border-grayblack-reddit text-xl font-medium'>Create a post</h1>
                 <div className='flex w-80 border-2 border-grayblack-reddit p-1 space-x-2 items-center mb-3 rounded bg-black-reddit'>
-                    <img 
+                    <img
                         src='https://i.ibb.co/x7NbSGH/Blue-Creep.jpg"'
                         width={30}
                         height={30}
                         className='rounded-full'
-                        alt='User avatar'/>
+                        alt='User avatar' />
                     <span className='text-sm font-medium'>r/Dotipha</span>
                     <div className='flex flex-1 justify-end'>
                         <ChevronDownIcon className='w-5 h-5' />
@@ -110,7 +114,9 @@ export default function NewPost() {
                                     <div className='border-2 border-dashed border-grayblack-reddit w-full h-[20rem]'>
                                         <button
                                             className='w-full h-full text-xl text-gray-reddit font-semibold'
-                                            onClick={() => getFiles.current.click()}>Upload</button>
+                                            onClick={() => getFiles.current.click()}>
+                                            Upload
+                                        </button>
                                         <input
                                             id='getFiles'
                                             className='hidden'
@@ -125,7 +131,8 @@ export default function NewPost() {
                                         <img
                                             className='max-h-[32rem]'
                                             src={imgUrl}
-                                            alt="not found" />
+                                            alt="not found" 
+                                            height={512}/>
                                     </div>}
                             </div>}
                         {type === "link" &&

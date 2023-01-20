@@ -30,7 +30,7 @@ function Vote({ upvotes, downvotes }) {
             <div onClick={upvoteHandler}>
                 <UpvoteIcon style={`${upvoted ? 'text-orange-600' : ''}`} />
             </div>
-            <span className='font-bold text-sm'>{votes}</span>
+            <span className='font-bold text-sm'>{votes?votes:'Vote'}</span>
             <div onClick={downvoteHandler}>
                 <DownvoteIcon style={`${downvoted ? 'text-blue-600' : ''}`} />
             </div>

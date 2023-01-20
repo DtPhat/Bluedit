@@ -4,7 +4,7 @@ function Layout({children}) {
     return (
         <>
             <Header />
-            <main className='flex justify-center w-screen h-screen pt-16'>
+            <main className='flex justify-center w-full h-full pt-16'>
                 <div className='flex pt-6 max-w-5xl w-full space-x-6'>
                     <div className='flex-1 px-6 lg:px-0'>
                         {children}
