@@ -4,16 +4,24 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
-      height:{
+      height: {
         'h-13': '3.25rem'
       },
-      colors:{
+      colors: {
         'black-reddit': '#1a1a1b',
-        'white-reddit': '#d7dadc',
+        'white-reddit': '#ffffff',
         'gray-reddit': '#758284',
-        'grayblack-reddit' : '#272729'
+        'grayblack-reddit': '#272729',
+        'graywhite-reddit': '#f6f7f8',
+        'grayblack2-reddit' : '#313133',
+        'graywhite2-reddit' : '#fafbfb'
+        
+      },
+      backgroundImage: {
+        'aurora': "url('/aurora.jpg')"
       }
     },
   },

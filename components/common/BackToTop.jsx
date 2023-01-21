@@ -14,12 +14,12 @@ function BackToTop() {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: 'auto'
         })
     }
     return (
         <button
-            className={`fixed z-10 bottom-2 rounded-full bg-white-reddit text-black font-semibold px-4 py-1 ${visible ? 'block' : 'hidden'}`}
+            className={`fixed z-10 bottom-2 rounded-full bg-blue-500 dark:bg-white-reddit text-white-reddit dark:text-black-reddit font-semibold px-4 py-1 ${visible ? 'block' : 'hidden'}`}
             onClick={scrollToTop}>
             Back to Top
         </button>

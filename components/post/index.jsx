@@ -24,16 +24,16 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
         }
     }
     return (
-        <div className='flex bg-black-reddit'>
+        <div className='flex bg-white-reddit dark:bg-black-reddit'>
             <div className='pt-2'>
                 <Vote upvotes={upvotes} downvotes={downvotes} />
             </div>
-            <div className='flex flex-col space-y-2 p-2 w-full'>
-                <div className='flex text-xs space-x-1 items-center'>
+            <div className='flex flex-col space-y-2 py-2 w-full'>
+                <div className='flex text-xs space-x-1 items-center px-2'>
                     <img src="https://i.ibb.co/x7NbSGH/Blue-Creep.jpg" alt="small thumbnail"
                         className="object-cover w-[20px] h-[20px] rounded-full" />
                     <span
-                        className='text-white-reddit font-bold hover:border-b'
+                        className='font-bold hover:border-b'
                         onClick={(e) => e.preventDefault()}>
                         r/Bluedit
                     </span>
@@ -41,12 +41,12 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                         • Posted by u/{author} {showTime(inserted_at)}
                     </span>
                 </div>
-                <h1 className='text-lg font-medium'>{title}</h1>
+                <h1 className='text-lg font-medium px-2'>{title}</h1>
                 {type == "text" &&
-                    <p>{content}</p>
+                    <p className='px-2'>{content}</p>
                 }
                 {type == "image" &&
-                    <div className='flex items-center justify-center bg-grayblack-reddit min-h-[20rem]'>
+                    <div className='flex items-center justify-center bg-graywhite-reddit dark:bg-grayblack-reddit min-h-[20rem]'>
                         {loading ?
                             <Loading /> :
                             <a href={image} target='_blank'>
@@ -62,12 +62,12 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                 {type == "link" &&
                     <div>
                         <span onClick={(e) => { e.preventDefault(); window.open(content) }}
-                            className='text-blue-400 hover:border-b hover:border-blue-400'>
+                            className='text-blue-400 hover:border-b hover:border-blue-400 px-2'>
                             {content}
                         </span>
                     </div>
                 }
-                <div className='pt-2'>
+                <div className='px-2'>
                     <Actions />
                 </div>
             </div>

@@ -11,6 +11,8 @@ export default function NewPost() {
     const [imgUrl, setImgUrl] = useState("")
     const { title, author, content } = newPost
     const getFiles = useRef()
+    const temp = 'style={{ color: type == "text" ? "#d7dadc" : "#758284", borderBottom: type == "text" ? "2px solid #d7dadc" : "1px solid #272729" }}'
+    const active = 'border-b-2 border-b-blue-500 text-blue-500 dark:border-b-graywhite-reddit dark:text-graywhite-reddit'
     async function createPost() {
         if (!content) return
         await supabase
@@ -39,8 +41,8 @@ export default function NewPost() {
     return (
         <div className='flex justify-center'>
             <div className='max-w-7xl w-full space-y-4'>
-                <h1 className='pb-3 border-b border-grayblack-reddit text-xl font-medium'>Create a post</h1>
-                <div className='flex w-80 border-2 border-grayblack-reddit p-1 space-x-2 items-center mb-3 rounded bg-black-reddit'>
+                <h1 className='pb-3 border-b border-graywhite-reddit dark:border-grayblack-reddit text-xl font-medium'>Create a post</h1>
+                <div className='flex w-80 border-2 border-graywhite-reddit dark:border-grayblack-reddit p-1 space-x-2 items-center mb-3 rounded bg-white-reddit dark:bg-black-reddit'>
                     <img
                         src='https://i.ibb.co/x7NbSGH/Blue-Creep.jpg"'
                         width={30}
@@ -52,36 +54,31 @@ export default function NewPost() {
                         <ChevronDownIcon className='w-5 h-5' />
                     </div>
                 </div>
-                <div className='flex flex-col space-y-3 rounded bg-black-reddit relative'>
+                <div className='flex flex-col space-y-3 rounded bg-white-reddit dark:bg-black-reddit relative '>
                     <div className='flex justify-between'>
                         <div
                             onClick={() => setType("text")}
-                            className='cursor-pointer flex space-x-1 border-b border-r border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold'
-                            style={{ color: type == "text" ? "#d7dadc" : "#758284", borderBottom: type == "text" ? "2px solid #d7dadc" : "1px solid #272729" }}>
+                            className={`cursor-pointer flex space-x-1 border-b border-r border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold ${type==='text'&&active}`}>
                             <DocumentTextIcon className='w-6 h-6' />
                             <span className='select-none'>Post</span>
                         </div>
                         <div
                             onClick={() => setType("image")}
-                            className='cursor-pointer flex space-x-1 border-b border-r border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold'
-                            style={{ color: type == "image" ? "#d7dadc" : "#758284", borderBottom: type == "image" ? "2px solid #d7dadc" : "1px solid #272729" }}>
+                            className={`cursor-pointer flex space-x-1 border-b border-r border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold ${type==='image'&&active}`}>
                             <PhotoIcon className='w-6 h-6' />
                             <span className='select-none'>Images</span>
                         </div>
                         <div
                             onClick={() => setType("link")}
-                            className='cursor-pointer flex space-x-1 border-b border-r border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold'
-                            style={{ color: type == "link" ? "#d7dadc" : "#758284", borderBottom: type == "link" ? "2px solid #d7dadc" : "1px solid #272729" }}>
+                            className={`cursor-pointer flex space-x-1 border-b border-r border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold ${type==='link'&&active}`}>
                             <LinkIcon className='w-6 h-6' />
                             <span className='select-none'>Link</span>
                         </div>
-                        <div className='cursor-not-allowed flex space-x-1 border-b border-r border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold'
-                            style={{ color: type == "poll" ? "#d7dadc" : "#758284", borderBottom: type == "poll" ? "2px solid #d7dadc" : "1px solid #272729" }}>
+                        <div className='cursor-not-allowed flex space-x-1 border-b border-r border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold'>
                             <Bars3CenterLeftIcon className='w-6 h-6' />
                             <span className='select-none'>Poll</span>
                         </div>
-                        <div className='cursor-not-allowed flex space-x-1 border-b border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold'
-                            style={{ color: type == "talk" ? "#d7dadc" : "#758284", borderBottom: type == "talk" ? "2px solid #d7dadc" : "1px solid #272729" }}>
+                        <div className='cursor-not-allowed flex space-x-1 border-b border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold'>
                             <MicrophoneIcon className='w-6 h-6' />
                             <span className='select-none'>Talk</span>
                         </div>
@@ -89,7 +86,7 @@ export default function NewPost() {
                     <div className='space-y-3 p-3'>
                         <div className=' flex items-center'>
                             <input
-                                className='w-full border-2 border-grayblack-reddit p-2 rounded bg-black-reddit'
+                                className='w-full border-2 border-graywhite-reddit dark:border-grayblack-reddit p-2 rounded bbg-white-reddit dark:bg-black-reddit'
                                 type="text"
                                 placeholder='Title'
                                 onChange={e => setNewtPost({ ...newPost, title: e.target.value })}
@@ -99,9 +96,9 @@ export default function NewPost() {
 
                         {/*Change content option here*/}
                         {type === "text" &&
-                            <div className='border-b border-grayblack-reddit pb-4'>
+                            <div className='border-b border-graywhite-reddit dark:border-grayblack-reddit pb-4'>
                                 <textarea
-                                    className='w-full border-2 border-grayblack-reddit p-2 rounded bg-black-reddit'
+                                    className='w-full border-2 border-graywhite-reddit dark:border-grayblack-reddit p-2 rounded bg-white-reddit dark:bg-black-reddit'
                                     rows={8}
                                     cols={10}
                                     placeholder='Text (required)'
@@ -109,11 +106,11 @@ export default function NewPost() {
                                 />
                             </div>}
                         {type === "image" &&
-                            <div className='border-b border-grayblack-reddit pb-4'>
+                            <div className='border-b border-graywhite-reddit dark:border-grayblack-reddit pb-4'>
                                 {!content ?
-                                    <div className='border-2 border-dashed border-grayblack-reddit w-full h-[20rem]'>
+                                    <div className='border-2 border-dashed border-graywhite-reddit dark:border-grayblack-reddit w-full h-[20rem]'>
                                         <button
-                                            className='w-full h-full text-xl text-gray-reddit font-semibold'
+                                            className='w-full h-full text-xl text-blue-500 dark:text-gray-reddit font-semibold'
                                             onClick={() => getFiles.current.click()}>
                                             Upload
                                         </button>
@@ -127,7 +124,7 @@ export default function NewPost() {
                                             onChange={handleImage}
                                         />
                                     </div> :
-                                    <div className='flex items-center justify-center bg-grayblack-reddit min-h-[20rem]' >
+                                    <div className='flex items-center justify-center bg-graywhite-reddit dark:bg-grayblack-reddit min-h-[20rem]' >
                                         <img
                                             className='max-h-[32rem]'
                                             src={imgUrl}
@@ -136,9 +133,9 @@ export default function NewPost() {
                                     </div>}
                             </div>}
                         {type === "link" &&
-                            <div className='border-b border-grayblack-reddit pb-4'>
+                            <div className='border-b border-graywhite-reddit dark:border-grayblack-reddit pb-4'>
                                 <input
-                                    className='w-full border-2 border-grayblack-reddit rounded bg-black-reddit p-2 pb-12 text-start'
+                                    className='w-full border-2 border-graywhite-reddit dark:border-grayblack-reddit rounded bg-white-reddit dark:bg-black-reddit p-2 pb-12 text-start'
                                     type="url"
                                     pattern="https://.*"
                                     placeholder='Url'
@@ -148,16 +145,16 @@ export default function NewPost() {
                         <div className='flex justify-end space-x-2 p-2'>
                             {type == "image" ?
                                 <button
-                                    className='border border-gray-reddit text-gray-reddit py-1 px-5 rounded-full font-bold'
+                                    className='border border-blue-500 dark:border-gray-reddit text-blue-500 dark:text-gray-reddit py-1 px-5 rounded-full font-bold'
                                     onClick={() => setNewtPost({ ...newPost, content: "" })}
                                     style={{ color: content ? "#d7dadc" : "" }}>
                                     Cancel
                                 </button> :
                                 <button
-                                    className='border border-gray-reddit text-gray-reddit py-1 px-5 rounded-full font-bold'
+                                    className='border border-blue-500 dark:border-gray-reddit text-blue-500 dark:text-gray-reddit py-1 px-5 rounded-full font-bold'
                                 >Save Draft</button>}
                             <button
-                                className='bg-white-reddit text-black-reddit px-5 rounded-full font-bold'
+                                className={`bg-blue-500 dark:bg-white-reddit border-blue-500 dark:border-gray-reddit text-white-reddit dark:text-gray-reddit px-5 rounded-full font-bold`}
                                 onClick={createPost}>
                                 Post
                             </button>

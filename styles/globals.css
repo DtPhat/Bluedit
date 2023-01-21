@@ -2,6 +2,8 @@
 @tailwind utilities;
 @tailwind components;
 
-body{
-    @apply bg-[#030303] text-white-reddit;
+@layer base {
+    body {
+        @apply bg-[#d7dadc] dark:bg-[#030303] text-black-reddit dark:text-white-reddit;
+    }
 }

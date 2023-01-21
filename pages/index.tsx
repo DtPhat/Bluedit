@@ -5,7 +5,6 @@ import Banner from '../components/banner'
 import About from '../components/about'
 import Head from 'next/head'
 import BackToTop from '../components/common/BackToTop'
-import { supabase } from '../client'
 export default function Home() {
   return (
     <>

@@ -1,7 +1,7 @@
 import { supabase } from '../../client.js'
-import Comment from '../../components/post/Comment'
+import CommentForm from '../../components/comment/CommentForm'
 import Layout from '../../components/layout'
-import NoComments from '../../components/post/NoComments'
+import NoComments from '../../components/comment/NoComments'
 import Loading from '../../components/loading'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -50,14 +50,13 @@ function PostPage({ post }) {
                 <title>{title}</title>
             </Head>
             <Layout>
-                <div className='border-2 rounded border-grayblack-reddit'>
+                <div className='border-2 rounded border-graywhite-reddit dark:border-grayblack-reddit'>
                     <Post {...post} />
-                    <div className='bg-black-reddit px-[2.5rem]'>
+                    <div className='bg-white-reddit dark:bg-black-reddit px-[2.5rem]'>
                         <div className='py-3'>
-                            <span className='text-sm'>Comment as <span className='text-blue-400 cursor-pointer'>Blueditor</span></span>
-                            <Comment />
+                            <CommentForm />
                         </div>
-                        <div className='border-b-2 border-grayblack-reddit pb-1'>
+                        <div className='border-b-2 border-graywhite-reddit dark:border-grayblack-reddit pb-1'>
                             <span className='text-sm text-blue-400'>Sort By: Best</span>
                         </div>
                         <div>

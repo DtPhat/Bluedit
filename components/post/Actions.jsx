@@ -6,25 +6,38 @@ import {
     EllipsisHorizontalIcon
 } from '@heroicons/react/24/outline'
 function Actions() {
+    const actions = [
+        {
+            icon: ChatBubbleLeftIcon,
+            text: '0 Comment'
+        },
+        {
+            icon: GiftIcon,
+            text: 'Award'
+        },
+        {
+            icon: ArrowUturnRightIcon,
+            text: 'Share'
+        },
+        {
+            icon: BookmarkIcon,
+            text: 'Save'
+        },
+    ]
+    const actionsElement = actions.map(item => {
+        return (
+            <div className='flex items-center text-gray-reddit font-bold rounded cursor-pointer hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit px-1.5 py-1'>
+                <item.icon className='w-6 h-6' />
+                <span className='pl-1 text-xs'>{item.text}</span>
+            </div>
+        )
+    })
     return (
         <div className='flex space-x-5 items-center'>
-            <div className='flex items-center text-gray-reddit font-bold'>
-                <ChatBubbleLeftIcon className='w-6 h-6' />
-                <span className='pl-1 text-xs'>0 Comment</span>
+            {actionsElement}
+            <div className='rounded cursor-pointer hover:bg-graywhite-reddit darkhover:bg-grayblack-reddit px-1.5'>
+                <EllipsisHorizontalIcon className='w-6 h-6 text-gray-reddit' />
             </div>
-            <div className='flex items-center text-gray-reddit font-bold'>
-                <GiftIcon className='w-6 h-6' />
-                <span className='pl-1 text-xs'>Award</span>
-            </div>
-            <div className='flex items-center text-gray-reddit font-bold'>
-                <ArrowUturnRightIcon className='w-6 h-6' />
-                <span className='pl-1 text-xs'>Share</span>
-            </div>
-            <div className='flex items-center text-gray-reddit font-bold'>
-                <BookmarkIcon className='w-6 h-6 mt-1' />
-                <span className='pl-1 text-xs'>Save</span>
-            </div>
-            <EllipsisHorizontalIcon className='w-6 h-6 text-gray-reddit'/>
         </div>
     );
 }
