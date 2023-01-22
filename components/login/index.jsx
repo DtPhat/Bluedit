@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { supabase } from '../../client'
+import {useEffect, useState} from 'react'
 function Login() {
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, [])
     const {theme} = useTheme();
     async function signInWithGoogle() {
         try {
@@ -13,18 +18,12 @@ function Login() {
         }
     }
 
-    // className="w-[320px] h-[180px]"
-    //                     src='/reddit-logo.png'
-    //                     width={320}
-    //                     height={180}
-    //                     alt="Reddit logo"
-
     return (
         <div className="flex h-screen items-center justify-center">
             <div className="max-w-lg w-full flex flex-col space-y-12 h-5/6 items-center justify-center bg-white-reddit dark:bg-black-reddit rounded-3xl">
                 <Link href='/' className="pb-16 flex space-x-2">
                     <img className='w-[120px]' src='/reddit-icon.svg' width={33} height={33} alt='icon' />
-                    <img className='w-[180px] hidden lg:block' src={theme === 'light' ? '/reddit-text-light.svg' : '/reddit-text-dark.svg'} width={62} height={62} alt='blueddit' />
+                    {mounted&&<img className='w-[180px] hidden lg:block' src={theme === 'light' ? '/reddit-text-light.svg' : '/reddit-text-dark.svg'} width={62} height={62} alt='blueddit' />}
                 </Link>
                 <span className="w-72">By continuing, you agree are setting up a Reddit account and agree to our&nbsp;
                     <a href="https://www.redditinc.com/policies/user-agreement" target='_blank' className="text-blue-400">User Agreement </a>

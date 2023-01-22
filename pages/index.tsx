@@ -12,7 +12,9 @@ export default function Home() {
         <title>Bluedit - Delve into anything</title>
       </Head>
       <Header />
-        <div className='pt-10 min-w-[35rem]'>
+      <div className='min-w-[35rem]'>
+
+        <div className='pt-10'>
           <Banner />
         </div>
         <main className='flex justify-center mt-6'>
@@ -28,6 +30,7 @@ export default function Home() {
             </div>
           </div>
         </main>
+      </div>
     </>
   )
 }
