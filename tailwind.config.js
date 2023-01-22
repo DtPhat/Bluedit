@@ -21,7 +21,8 @@ module.exports = {
         
       },
       backgroundImage: {
-        'aurora': "url('/aurora.jpg')"
+        'aurora': "url('/Aurora.jpg')",
+        'banner': "url('/Banner.jpg')"
       }
     },
   },

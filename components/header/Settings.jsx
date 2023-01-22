@@ -53,7 +53,7 @@ export default function UserSettings() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-20 mt-2 w-56 origin-top-right rounded text-black-reddit dark:text-white-reddit bg-white-reddit dark:bg-black-reddit border border-gray-reddit">
+        <Menu.Items className="absolute right-0 z-20 mt-2 w-56 origin-top-right rounded text-black-reddit dark:text-white-reddit bg-white-reddit dark:bg-black-reddit border-2 border-gray-400 dark:border-gray-600">
           <div className="">
             <Menu.Item>
               {({ active }) => (
@@ -61,7 +61,7 @@ export default function UserSettings() {
                   href="#"
                   className={classNames(
                     active ? 'bg-gray-200 dark:bg-grayblack-reddit' : '',
-                    'flex items-center justify-between px-8 py-2 text-sm'
+                    'flex items-center justify-between px-8 py-2 text-sm border-b border-b-gray-300 dark:border-gray-600'
                   )}
                 >
 

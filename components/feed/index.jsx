@@ -5,12 +5,10 @@ import PostCreate from './PostCreate'
 import PostFilter from './PostFilter'
 import Link from 'next/link'
 import Loading from '../loading'
-import { useRouter } from 'next/navigation'
 import { RedditContext } from '../../context/RedditContext'
 export default function Feed() {
     const [loading, setLoading] = useState(true)
     const [posts, setPosts] = useState([])
-    const router = useRouter()
     const { currentUser } = useContext(RedditContext)
     useEffect(() => {
         saveAndUpdateUser()
@@ -44,7 +42,7 @@ export default function Feed() {
     const PostList = posts.map(post =>
         <Link href={`/post/${post.id}`}>
             <div
-                className='cursor-pointer border-2 border-graywhite-reddit dark:border-grayblack-reddit rounded mb-4 mt-4 bg-white-reddit dark:bg-black-reddit w-full hover:border-white-reddit'
+                className='w-full border-2 border-graywhite-reddit dark:border-grayblack-reddit rounded my-4 bg-white-reddit dark:bg-black-reddit hover:border-white-reddit'
                 key={post.id}>
                 <Post {...post} />
             </div>
@@ -54,7 +52,7 @@ export default function Feed() {
         <div className='space-y-4'>
             <PostCreate />
             <PostFilter />
-            {loading ? <Loading /> : PostList}
+            <div>{loading ? <Loading /> : PostList}</div>
         </div>
     )
 }

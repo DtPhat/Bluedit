@@ -3,16 +3,16 @@ import {
 } from '@heroicons/react/24/solid'
 function Banner() {
     return (
-        <div className="flex flex-col items-center bg-white-reddit dark:bg-black-reddit overflow-hidden">
-            <div className='w-[1920px] overflow-hidden'>
+        <div className="w-full flex flex-col items-center bg-white-reddit dark:bg-black-reddit overflow-hidden">
+            <div className='w-full overflow-hidden h-[12rem] '>
                 <img src="https://i.ibb.co/hBhJ026/Tumblr.jpg" alt="Banner"
-                    className="object-cover w-full h-[180px]" width={1920}/>
+                    className="object-cover h-full w-full" width={1920} />
             </div>
             <div className="max-w-5xl w-full flex flex-col space-y-1 px-6 lg:px-0">
                 <div className='flex items-center space-x-2'>
                     <div className="relative top-[-1.5rem]">
                         <img src="https://i.ibb.co/x7NbSGH/Blue-Creep.jpg" alt="thumbnail"
-                            className="object-cover w-[82px] h-[82px] rounded-full border-4 " width={82}/>
+                            className="object-cover w-[82px] h-[82px] rounded-full border-4 " width={82} />
                     </div>
                     <div className="flex flex-col p-2">
                         <h1 className="text-3xl font-bold">Bluedit</h1>

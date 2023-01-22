@@ -11,8 +11,7 @@ export default function NewPost() {
     const [imgUrl, setImgUrl] = useState("")
     const { title, author, content } = newPost
     const getFiles = useRef()
-    const temp = 'style={{ color: type == "text" ? "#d7dadc" : "#758284", borderBottom: type == "text" ? "2px solid #d7dadc" : "1px solid #272729" }}'
-    const active = 'border-b-2 border-b-blue-500 text-blue-500 dark:border-b-graywhite-reddit dark:text-graywhite-reddit'
+    const active = 'border-b-2 border-b-blue-500 text-blue-500 dark:border-b-graywhite-reddit dark:text-graywhite-reddit bg-blue-50 dark:bg-grayblack-reddit'
     async function createPost() {
         if (!content) return
         await supabase
