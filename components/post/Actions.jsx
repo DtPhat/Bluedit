@@ -24,9 +24,9 @@ function Actions() {
             text: 'Save'
         },
     ]
-    const actionsElement = actions.map(item => {
+    const actionsElement = actions.map((item, i) => {
         return (
-            <div className='flex items-center text-gray-reddit font-bold rounded cursor-pointer hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit p-1'>
+            <div className='flex items-center text-gray-reddit font-bold rounded cursor-pointer hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit p-1' key={i}>
                 <item.icon className='w-6 h-6' />
                 <span className='pl-1 text-xs'>{item.text}</span>
             </div>

@@ -20,8 +20,8 @@ function Login() {
         }
     }
     const appleIcon = {
-        white: 'https://www.clipartmax.com/png/full/34-347603_white-apple-logo-transparent.png',
-        black: 'https://www.transparentpng.com/thumb/apple-logo/d9RxbG-apple-logo-free-png.png'
+        white: '/white-apple-logo.png',
+        black: '/black-apple-logo.png'
     }
 
     return (

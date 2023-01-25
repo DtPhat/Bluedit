@@ -45,7 +45,7 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                 
                 <div>
                     {type == "text" &&
-                        <p className='px-2'>{content}</p>
+                        <p className='px-2 whitespace-pre-line'>{content}</p>
                     }
                     {type == "image" &&
                         <div className='flex items-center justify-center bg-graywhite-reddit dark:bg-grayblack-reddit min-h-[20rem]'>

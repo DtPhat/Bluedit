@@ -40,7 +40,7 @@ export default function Feed() {
         })
     }
     const PostList = posts.map(post =>
-        <Link href={`/post/${post.id}`}>
+        <Link href={`/post/${post.id}`} key={post.id}>
             <div
                 className='w-full border-2 border-graywhite-reddit dark:border-grayblack-reddit rounded my-4 bg-white-reddit dark:bg-black-reddit hover:border-white-reddit'
                 key={post.id}>
