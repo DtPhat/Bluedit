@@ -1,7 +1,7 @@
 import { supabase } from '../../client'
 import { useEffect, useState, useContext } from 'react'
 import Post from '../post'
-import PostCreate from './PostCreate'
+import PostCreater from './PostCreater'
 import PostFilter from './PostFilter'
 import Link from 'next/link'
 import Loading from '../loading'
@@ -10,17 +10,22 @@ export default function Feed() {
     const [loading, setLoading] = useState(true)
     const [posts, setPosts] = useState([])
     const { currentUser } = useContext(RedditContext)
+    const [postFilter, setPostFilter] = useState('hot')
+    const field = postFilter==='hot'&&'id' || postFilter==='new'&&'inserted_at' || postFilter==='top'&&'upvotes'
+    const isAscending =  postFilter==='hot'&&true || postFilter==='new'&&false || postFilter==='top'&&false
+    useEffect(() => {
+        fetchPosts()
+    }, [postFilter]);
+    
     useEffect(() => {
         saveAndUpdateUser()
-        fetchPosts()
     }, [currentUser]);
-
     async function fetchPosts() {
         try {
             const { data } = await supabase
                 .from('feed')
                 .select('*')
-                .order('id')
+                .order(field, { ascending: isAscending })
             setPosts(data)
         } catch (error) {
             console.log(error)
@@ -50,8 +55,8 @@ export default function Feed() {
     )
     return (
         <div className='space-y-4'>
-            <PostCreate />
-            <PostFilter />
+            <PostCreater />
+            <PostFilter postFilter={postFilter} setPostFilter={setPostFilter}/>
             <div>{loading ? <Loading /> : PostList}</div>
         </div>
     )
