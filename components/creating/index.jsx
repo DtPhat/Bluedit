@@ -122,7 +122,7 @@ export default function NewPost() {
                                             <button
                                                 className='w-full h-full text-xl text-blue-500 dark:text-gray-reddit font-semibold'
                                                 onClick={() => getFiles.current.click()}>
-                                                Upload
+                                                Upload images
                                             </button>
                                             <input
                                                 id='getFiles'
@@ -163,7 +163,7 @@ export default function NewPost() {
                                         className='border border-blue-500 dark:border-gray-reddit text-blue-500 dark:text-gray-reddit py-1 px-5 rounded-full font-bold'
                                     >Save Draft</button>}
                                 <button
-                                    className={`bg-blue-500 dark:bg-white-reddit border-blue-500 dark:border-gray-reddit text-white-reddit dark:text-gray-reddit px-5 rounded-full font-bold`}
+                                    className={`bg-blue-500 dark:bg-white-reddit border-blue-500 dark:border-gray-reddit text-white-reddit dark:text-black-reddit px-5 rounded-full font-bold`}
                                     onClick={createPost}>
                                     Post
                                 </button>

@@ -3,6 +3,7 @@ import Actions from './Actions'
 import { supabase } from '../../client'
 import { useState, useEffect } from 'react'
 import Loading from '../loading';
+import { useRouter } from 'next/router';
 function Post({ id, title, author, content, type, upvotes, downvotes, inserted_at }) {
     const [image, setImage] = useState("")
     const [loading, setLoading] = useState(true)
@@ -23,6 +24,7 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
             setLoading(false)
         }
     }
+    const router = useRouter()
     return (
         <div className='flex bg-white-reddit dark:bg-black-reddit w-full'>
             <div className='pt-2'>
@@ -33,16 +35,27 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                     <img src="https://i.ibb.co/x7NbSGH/Blue-Creep.jpg" alt="small thumbnail"
                         className="object-cover w-[20px] h-[20px] rounded-full" />
                     <span
-                        className='font-bold hover:border-b'
+                        className='font-bold hover:border-b hover:border-b-black-reddit dark:hover:border-b-white-reddit'
                         onClick={(e) => e.preventDefault()}>
                         r/Bluedit
                     </span>
+                    <span className='text-gray-reddit px-1'> • </span>
                     <span className='text-gray-reddit'>
-                        • Posted by u/{author} {showTime(inserted_at)}
+                        Posted by{' '}
+                        <span
+                            className='hover:border-b hover:border-b-black-reddit dark:hover:border-b-white-reddit'
+                            onClick={(e) => {
+                                e.preventDefault()
+                                router.push(`/user/${author}`)
+                            }}
+                        >u/{author}
+                        </span>
                     </span>
+                    <span className='text-gray-reddit px-1'> • </span>
+                    <span className='text-gray-reddit'>Posed {showTime(inserted_at)}</span>
                 </div>
                 <h1 className='text-lg font-medium px-2'>{title}</h1>
-                
+
                 <div>
                     {type == "text" &&
                         <p className='px-2 whitespace-pre-line'>{content}</p>
@@ -89,13 +102,13 @@ export const showTime = (inserted_at) => {
     const minutediff = Math.round(timediff / (1000 * 60))
     const seconddiff = Math.round(timediff / (1000))
     if (daydiff > 0) {
-        return `Posted ${daydiff} day${daydiff === 1 ? '' : 's'} ago`
+        return `${daydiff} day${daydiff === 1 ? '' : 's'} ago`
     } else if (hourdiff > 0) {
-        return `Posted ${hourdiff} hour${hourdiff === 1 ? '' : 's'} ago`
+        return `${hourdiff} hour${hourdiff === 1 ? '' : 's'} ago`
     } else if (minutediff > 0) {
-        return `Posted ${minutediff} minute${minutediff === 1 ? '' : 's'} ago`
+        return `${minutediff} minute${minutediff === 1 ? '' : 's'} ago`
     } else {
-        return `Posted ${seconddiff} second${seconddiff === 1 ? '' : 's'} ago`
+        return `${seconddiff} second${seconddiff === 1 ? '' : 's'} ago`
     }
 }
 

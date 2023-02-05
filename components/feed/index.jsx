@@ -16,7 +16,6 @@ export default function Feed() {
     useEffect(() => {
         fetchPosts()
     }, [postFilter]);
-    
     useEffect(() => {
         saveAndUpdateUser()
     }, [currentUser]);
@@ -33,7 +32,6 @@ export default function Feed() {
             setLoading(false)
         }
     }
-
     const saveAndUpdateUser = async () => {
         if (!currentUser) return
         await supabase.from('users').upsert({

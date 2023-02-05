@@ -27,7 +27,7 @@ export async function getStaticProps(selectedPost) {
     const { data } = await supabase
         .from('feed')
         .select('*')
-        .eq('id', postId)
+        .eq('id',   )
         .single()
     return {
         props: {

@@ -4,11 +4,12 @@ import { ChevronDownIcon, ArrowLeftOnRectangleIcon, ArrowRightOnRectangleIcon } 
 import { useRouter } from 'next/navigation'
 import { RedditContext } from '../../context/RedditContext'
 import { useTheme } from "next-themes";
+import Link from 'next/link'
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function UserSettings() {
+export default function Settings() {
   const { currentUser } = useContext(RedditContext)
   const { systemTheme, theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -86,15 +87,15 @@ export default function UserSettings() {
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href="#"
+                <Link
+                  href={`/user/${currentUser ? currentUser.user_metadata.full_name: 'Bluediter'}`}
                   className={classNames(
                     active ? 'bg-gray-200 dark:bg-grayblack-reddit' : '',
                     'block px-8 py-2 text-sm'
                   )}
                 >
-                  Account settings
-                </a>
+                  User Profile
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>

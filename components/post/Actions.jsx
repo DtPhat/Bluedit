@@ -35,7 +35,7 @@ function Actions() {
     return (
         <div className='flex sm:space-x-5 items-center'>
             {actionsElement}
-            <div className='rounded cursor-pointer hover:bg-graywhite-reddit darkhover:bg-grayblack-reddit px-1'>
+            <div className='rounded cursor-pointer hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit px-1'>
                 <EllipsisHorizontalIcon className='w-6 h-6 text-gray-reddit' />
             </div>
         </div>
