@@ -1,7 +1,7 @@
 function UserSkeleton() {
     return (
         <div>
-            Under development
+            Nothing here
         </div>
     );
 }
