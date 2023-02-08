@@ -34,7 +34,7 @@ function Login() {
                 <span className="w-72">By continuing, you agree are setting up a Reddit account and agree to our&nbsp;
                     <a href="https://www.redditinc.com/policies/user-agreement" target='_blank' className="text-blue-400">User Agreement </a>
                     and&nbsp;
-                    <a href="https://www.redditinc.com/policies/user-agreement" target='_blank' className="text-blue-400">Privacy Policy</a>.
+                    <a href="https://www.redditinc.com/policies/privacy-policy" target='_blank' className="text-blue-400">Privacy Policy</a>.
                 </span>
                 {mounted &&
                     <div className="flex flex-col space-y-4">

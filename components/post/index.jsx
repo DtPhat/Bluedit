@@ -85,7 +85,7 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                 </div>
 
                 <div className='pl-2'>
-                    <Actions />
+                    <Actions postId = {id} postAuthor={author}/>
                 </div>
             </div>
         </div>
