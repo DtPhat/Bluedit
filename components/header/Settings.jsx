@@ -1,9 +1,10 @@
 import { Fragment, useContext, useEffect, useState } from 'react'
 import { Menu, Transition, Switch } from '@headlessui/react'
 import { ChevronDownIcon, ArrowLeftOnRectangleIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/20/solid'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/router'
 import { RedditContext } from '../../context/RedditContext'
 import { useTheme } from "next-themes";
+import { supabase } from '../../client'
 import Link from 'next/link'
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -19,11 +20,14 @@ export default function Settings() {
   }, [])
   const currentTheme = theme === "system" ? systemTheme : theme;
   const [enabled, setEnabled] = useState(currentTheme === 'dark')
-  setTheme(enabled?'dark':'light')
-  const moveToLogin = () => {
+  setTheme(enabled ? 'dark' : 'light')
+  const logIn = () => {
     router.push('/login')
   }
-
+  const logOut = async () => {
+    await supabase.auth.signOut();
+    router.reload()
+  }
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -88,7 +92,7 @@ export default function Settings() {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href={`/user/${currentUser ? currentUser.user_metadata.full_name: 'Bluediter'}`}
+                  href={`/user/${currentUser ? currentUser.user_metadata.full_name : 'Bluediter'}`}
                   className={classNames(
                     active ? 'bg-gray-200 dark:bg-grayblack-reddit' : '',
                     'block px-8 py-2 text-sm'
@@ -101,7 +105,7 @@ export default function Settings() {
             <Menu.Item>
               {({ active }) => (
                 <button
-                  onClick={moveToLogin}
+                  onClick={currentUser ? logOut : logIn}
                   className={classNames(
                     active ? 'bg-gray-200 dark:bg-grayblack-reddit' : '',
                     'flex w-full px-8 py-2 space-x-2 text-sm'
