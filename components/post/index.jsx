@@ -35,15 +35,18 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                     <img src="https://i.ibb.co/x7NbSGH/Blue-Creep.jpg" alt="small thumbnail"
                         className="object-cover w-[20px] h-[20px] rounded-full" />
                     <span
-                        className='font-bold hover:border-b hover:border-b-black-reddit dark:hover:border-b-white-reddit'
-                        onClick={(e) => e.preventDefault()}>
+                        className='font-bold hover:border-b hover:border-b-black-reddit dark:hover:border-b-white-reddit cursor-pointer'
+                        onClick={(e) => {
+                            e.preventDefault()
+                            router.push('/')
+                        }}>
                         r/Bluedit
                     </span>
                     <span className='text-gray-reddit px-1'> • </span>
                     <span className='text-gray-reddit'>
                         Posted by{' '}
                         <span
-                            className='hover:border-b hover:border-b-black-reddit dark:hover:border-b-white-reddit'
+                            className='hover:border-b hover:border-b-black-reddit dark:hover:border-b-white-reddit cursor-pointer'
                             onClick={(e) => {
                                 e.preventDefault()
                                 router.push(`/user/${author}`)
@@ -85,7 +88,7 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                 </div>
 
                 <div className='pl-2'>
-                    <Actions postId = {id} postAuthor={author}/>
+                    <Actions postId={id} postAuthor={author} />
                 </div>
             </div>
         </div>
