@@ -13,14 +13,16 @@ function classNames(...classes) {
 export default function Settings() {
   const { currentUser } = useContext(RedditContext)
   const { systemTheme, theme, setTheme } = useTheme();
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  
   const [mounted, setMounted] = useState(false);
+  const [enabled, setEnabled] = useState(currentTheme === 'dark')
   const router = useRouter()
   useEffect(() => {
     setMounted(true);
-  }, [])
-  const currentTheme = theme === "system" ? systemTheme : theme;
-  const [enabled, setEnabled] = useState(currentTheme === 'dark')
-  setTheme(enabled ? 'dark' : 'light')
+    setTheme(enabled ? 'dark' : 'light')
+  }, [enabled])
+
   const logIn = () => {
     router.push('/login')
   }
