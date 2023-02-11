@@ -2,7 +2,7 @@ import Layout from '../components/layout'
 import Feed from '../components/feed'
 import Header from '../components/header'
 import Banner from '../components/banner'
-import About from '../components/about'
+import Info from '../components/info'
 import Head from 'next/head'
 import BackToTop from '../components/common/BackToTop'
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
               <Feed />
             </div>
             <div className='hidden lg:block'>
-              <About />
+              <Info />
               <div className='flex w-full justify-center'>
                 <BackToTop />
               </div>

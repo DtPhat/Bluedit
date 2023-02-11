@@ -1,5 +1,5 @@
 import Header from "./header";
-import About from "./about";
+import Info from "./info";
 function Layout({children}) {
     return (
         <>
@@ -10,7 +10,7 @@ function Layout({children}) {
                         {children}
                     </div>
                     <div className='hidden lg:block'>
-                        <About />
+                        <Info />
                     </div>
                 </div>
             </main>
