@@ -94,7 +94,7 @@ export default function Settings() {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href={`/user/${currentUser ? currentUser.user_metadata.full_name : 'Bluediter'}`}
+                  href={`/user/${currentUser ? currentUser.user_metadata.full_name : 'Blueditor'}`}
                   className={classNames(
                     active ? 'bg-gray-200 dark:bg-grayblack-reddit' : '',
                     'block px-8 py-2 text-sm'

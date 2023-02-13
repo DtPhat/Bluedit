@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { supabase } from '../../client'
 import { useRouter } from 'next/router'
-import { useState, useEffect, useContext, useRef } from 'react'
+import {useContext} from 'react'
 import { RedditContext } from '../../context/RedditContext'
 import useExpandableComponent from '../../hooks/useExpandableComponent'
 function Actions({ postId, postAuthor }) {
