@@ -5,7 +5,7 @@ function BackToTop() {
         window.addEventListener('scroll', toggleVisible)
     }, []);
     const toggleVisible = () => {
-        if (document.documentElement.scrollTop > 300) {
+        if (document.documentElement.scrollTop > 500) {
             setVisible(true)
         } else {
             setVisible(false)
@@ -19,7 +19,7 @@ function BackToTop() {
     }
     return (
         <button
-            className={`fixed z-10 bottom-2 rounded-full bg-blue-500 dark:bg-white-reddit text-white-reddit dark:text-black-reddit font-bold px-4 py-1 ${visible ? 'block' : 'hidden'}`}
+            className={`opacity-80 fixed z-10 bottom-2 rounded-full bg-blue-500 dark:bg-white-reddit text-white-reddit dark:text-black-reddit font-bold px-4 py-1 ${visible ? 'block' : 'hidden'}`}
             onClick={scrollToTop}>
             Back to Top
         </button>
