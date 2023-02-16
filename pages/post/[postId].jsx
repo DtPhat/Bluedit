@@ -50,7 +50,7 @@ function PostPage({ post }) {
                 <title>{title}</title>
             </Head>
             <Layout>
-                <div className='border-2 rounded border-graywhite-reddit dark:border-grayblack-reddit'>
+                <div className='border-2 rounded border-graywhite-reddit dark:border-grayblack-reddit mb-4'>
                     <Post {...post} />
                     <div className='bg-white-reddit dark:bg-black-reddit px-[2.5rem]'>
                         <div className='py-3'>

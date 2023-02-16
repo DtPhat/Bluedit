@@ -19,7 +19,7 @@ function BackToTop() {
     }
     return (
         <button
-            className={`opacity-80 fixed z-10 bottom-2 rounded-full bg-blue-500 dark:bg-white-reddit text-white-reddit dark:text-black-reddit font-bold px-4 py-1 ${visible ? 'block' : 'hidden'}`}
+            className={`hover:opacity-80 fixed z-10 bottom-2 rounded-full bg-blue-500 dark:bg-white-reddit text-white-reddit dark:text-black-reddit font-bold px-4 py-1 ${visible ? 'block' : 'hidden'}`}
             onClick={scrollToTop}>
             Back to Top
         </button>
