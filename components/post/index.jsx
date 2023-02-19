@@ -28,7 +28,7 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
         <div className='flex bg-white-reddit dark:bg-black-reddit w-full'>
             <div className='pt-2'>
                 <Vote upvotes={upvotes} downvotes={downvotes} />
-            </div> 
+            </div>
             <div className='flex flex-col space-y-2 py-2 w-full '>
                 <div className='flex text-xs space-x-1 items-center px-2'>
                     <img src="https://i.ibb.co/x7NbSGH/Blue-Creep.jpg" alt="small thumbnail"
@@ -41,7 +41,7 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                         }}>
                         r/Bluedit
                     </span>
-                    <span className='text-gray-reddit px-1'> • </span>
+                    <span className='text-gray-reddit px-[0.125rem]'>•</span>
                     <span className='text-gray-reddit'>
                         Posted by{' '}
                         <span
@@ -53,7 +53,7 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                         >u/{author}
                         </span>
                     </span>
-                    <span className='text-gray-reddit px-1'> • </span>
+                    <span className='text-gray-reddit px-[0.125rem]'>•</span>
                     <span className='text-gray-reddit'>Posed {showTime(inserted_at)}</span>
                 </div>
 
