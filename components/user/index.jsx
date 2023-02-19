@@ -31,7 +31,7 @@ function User({ email, name, profileImage, created_at }) {
                                 <p>💠 {name === 'Blueditor' ? '0' : '100'}</p>
                             </p>
                         </div>
-                        <div className="flex space-y-0 sm:flex-col sm:space-y-4 pt-2 w-full sm:w-auto items-center">
+                        <div className="flex space-y-0 justify-around md:flex-col md:space-y-4 pt-2 w-full md:w-auto items-center">
                             <button className=" bg-blue-500 dark:bg-gray-200 border-blue-500 dark:border-gray-reddit text-white-reddit dark:text-black-reddit py-1 w-40 rounded-full font-semibold text-xl mr-2 sm:mr-0"
                                 style={{ cursor: name === 'Blueditor' ? 'not-allowed' : 'pointer' }}
                             >Follow

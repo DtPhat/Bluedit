@@ -8,7 +8,7 @@ function New() {
                 <title>Submit to Bluedit</title>
             </Head>
             <Layout>
-                <NewPost />
+                <NewPost/>
             </Layout>
         </>
     );

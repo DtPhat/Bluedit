@@ -7,8 +7,9 @@ import Loading from '../loading'
 export default function NewPost() {
     const { currentUser } = useContext(RedditContext)
     const router = useRouter()
+    const initialType = router.query.type
     const [loading, setLoading] = useState(false)
-    const [type, setType] = useState("text")
+    const [type, setType] = useState(initialType || "text")
     const [newPost, setNewtPost] = useState({ title: "", author: currentUser ? currentUser.user_metadata.full_name : "Blueditor", content: "" })
     const [imgUrl, setImgUrl] = useState("")
     const { title, author, content } = newPost

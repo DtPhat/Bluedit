@@ -6,7 +6,7 @@ export const RedditProvider = ({ children }) => {
     async function fetchSesssion() {
         try {
             const { data } = await supabase.auth.getSession()
-            setCurrentUser(data.session.user)
+            data.session && setCurrentUser(data.session.user)
         } catch (error) {
             console.log(error)
         }
@@ -15,7 +15,7 @@ export const RedditProvider = ({ children }) => {
     useEffect(() => {
         fetchSesssion()
         supabase.auth.onAuthStateChange((event, session) => {
-            session&&setCurrentUser(session.user)
+            session && setCurrentUser(session.user)
         })
 
     }, []);
