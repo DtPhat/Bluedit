@@ -12,8 +12,7 @@ function PostCreater() {
             />
             <Link
                 href={{
-                    pathname: '/new',
-                    query: { type: "text" }
+                    pathname: '/new'
                 }}
                 className="border-2 flex-1 p-2 rounded border-gray-200 dark:border-grayblack2-reddit text-gray-reddit bg-graywhite-reddit dark:bg-grayblack-reddit cursor-text">
                 Create Post

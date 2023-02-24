@@ -1,4 +1,3 @@
-import Layout from '../components/layout'
 import Feed from '../components/feed'
 import Header from '../components/header'
 import Banner from '../components/banner'

@@ -53,7 +53,7 @@ export default function Feed() {
         </Link>
     )
     return (
-        <div className='space-y-4 pb-4'>
+        <div className='space-y-4 pb-12'>
             <PostCreater />
             <PostFilter postFilter={postFilter} setPostFilter={setPostFilter}/>
             <div>{loading ? <Loading /> : PostList}</div>

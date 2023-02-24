@@ -6,9 +6,7 @@ import {
     Bars4Icon,
     ChevronDownIcon
 } from '@heroicons/react/24/solid'
-import {useState} from 'react'
 function PostFilter({postFilter, setPostFilter}) {
-    const [active, setActive] = useState([true, false, false])
     const activeClassName = 'bg-graywhite-reddit dark:bg-grayblack-reddit text-blue-500 dark:text-white-reddit'
     const hoverClassName = 'hover:bg-graywhite-reddit hover:dark:bg-grayblack-reddit'
     return (

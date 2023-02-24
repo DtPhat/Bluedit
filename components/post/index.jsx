@@ -80,7 +80,7 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                     {type == "link" &&
                         <div>
                             <span onClick={(e) => { e.preventDefault(); window.open(content) }}
-                                className='text-blue-400 hover:border-b hover:border-blue-400 ml-2 cursor-pointer'>
+                                className='text-blue-600 dark:text-blue-400 hover:border-b hover:border-blue-400 ml-2 cursor-pointer'>
                                 {content}
                             </span>
                         </div>

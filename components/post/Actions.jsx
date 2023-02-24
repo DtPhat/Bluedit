@@ -4,7 +4,8 @@ import {
     ArrowUturnRightIcon,
     BookmarkIcon,
     EllipsisHorizontalIcon,
-    TrashIcon
+    TrashIcon,
+    PencilIcon
 } from '@heroicons/react/24/outline'
 import { supabase } from '../../client'
 import { useRouter } from 'next/router'
@@ -46,6 +47,14 @@ function Actions({ postId, postAuthor }) {
             }
         }
     }
+    const editPost = async () => {
+        if (postAuthor === "Blueditor" || user === postAuthor) {
+            router.push({
+                pathname: "/edit",
+                query: { "id": postId }
+            })
+        }
+    }
     return (
         <div className='flex sm:space-x-5 items-center'>
             {actionsElement}
@@ -54,14 +63,26 @@ function Actions({ postId, postAuthor }) {
                 ref={expandableRef}>
                 <EllipsisHorizontalIcon className='w-6 h-6 text-gray-reddit rounded hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit' />
                 {expanding &&
-                    <button className='flex absolute border-2 rounded mt-1 py-1 px-2 text-red-400 bg-blackwhite-reddit border-gray-200 dark:border-gray-600 bg-white-reddit dark:bg-black-reddit hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit'
-                        onClick={deletePost}
-                        style={{
-                            cursor: postAuthor === "Blueditor" || user === postAuthor ? "" : "not-allowed"
-                        }}>
-                        <TrashIcon className='w-6 h-6' />
-                        <span className='pl-2 font-semibold'>Delete</span>
-                    </button>}
+                    <div className='absolute border-2 border-gray-200 dark:border-gray-600 rounded bg-white-reddit dark:bg-black-reddit mt-1 '>
+                        <button className='flex w-full py-1 px-2 text-gray-reddit hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit '
+                            onClick={editPost}
+                            style={{
+                                cursor: postAuthor === "Blueditor" || user === postAuthor ? "" : "not-allowed"
+                            }}>
+                            <PencilIcon className='w-6 h-6' />
+                            <span className='pl-2 font-semibold'>Edit</span>
+                        </button>
+                        <hr className='border-gray-200 dark:border-gray-600' />
+                        <button className='flex w-full py-1 px-2 text-gray-reddit bg-blackwhite-reddit hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit '
+                            onClick={deletePost}
+                            style={{
+                                cursor: postAuthor === "Blueditor" || user === postAuthor ? "" : "not-allowed"
+                            }}>
+                            <TrashIcon className='w-6 h-6' />
+                            <span className='pl-2 font-semibold'>Delete</span>
+                        </button>
+                    </div>
+                }
             </div>
         </div>
     );
@@ -84,5 +105,4 @@ const actions = [
         text: 'Save'
     },
 ]
-
 export default Actions;
