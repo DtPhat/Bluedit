@@ -37,7 +37,7 @@ function About() {
             </div>
 
             <div className='flex justify-center border-b pb-4 border-gray-reddit'>
-                <button className='w-full bg-blue-500 dark:bg-white-reddit text-white-reddit dark:text-black-reddit rounded-full p-1 font-bold'
+                <button className='w-full hover:opacity-90 bg-blue-500 dark:bg-white-reddit text-white-reddit dark:text-black-reddit rounded-full p-1 font-bold'
                     onClick={createPost}
                 >Create Post</button>
             </div>

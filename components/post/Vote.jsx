@@ -28,11 +28,11 @@ function Vote({ upvotes, downvotes }) {
     return (
         <div className='flex flex-col w-10 items-center'>
             <div onClick={upvoteHandler}>
-                <UpvoteIcon style={`${upvoted ? 'text-orange-600' : ''}`} />
+                <UpvoteIcon active={upvoted}/>
             </div>
             <div className='font-bold'>{votes ? <span className='text-sm'>{votes}</span> : <span className='text-xs'>Vote</span>}</div>
             <div onClick={downvoteHandler}>
-                <DownvoteIcon style={`${downvoted ? 'text-blue-600' : ''}`} />
+                <DownvoteIcon active={downvoted} />
             </div>
         </div>
     );
