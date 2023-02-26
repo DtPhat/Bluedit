@@ -33,7 +33,8 @@ export async function getStaticProps(selectedPost) {
         props: {
             post: data,
         },
-    }
+        revaliate:10,
+    }   
 }
 
 
