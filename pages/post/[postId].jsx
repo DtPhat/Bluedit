@@ -6,6 +6,7 @@ import Loading from '../../components/loading'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Post from '../../components/post'
+import NotFound from '../../components/notFound'
 export async function getStaticPaths() {
     const { data } = await supabase
         .from('feed')
@@ -24,17 +25,23 @@ export async function getStaticPaths() {
 }
 export async function getStaticProps(selectedPost) {
     const postId = parseInt(selectedPost.params.postId)
-    const { data } = await supabase
-        .from('feed')
-        .select('*')
-        .eq('id', postId  )
-        .single()
+    let post = null
+    try {
+        const { data } = await supabase
+            .from('feed')
+            .select('*')
+            .eq('id', postId)
+            .single()
+        post = data
+    } catch (error) {
+        console.log(error)
+    }
     return {
         props: {
-            post: data,
+            post,
         },
-        revalidate:10,
-    }   
+        revalidate: 10,
+    };
 }
 
 
@@ -44,7 +51,10 @@ function PostPage({ post }) {
     if (router.isFallback) {
         return <Loading />
     }
-    const { id, title, author, content, type, upvotes, downvotes } = post
+    if (!post) {
+        return <NotFound />
+    }
+    const { title } = post
     return (
         <>
             <Head>

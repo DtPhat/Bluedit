@@ -58,7 +58,7 @@ function Actions({ postId, postAuthor }) {
     return (
         <div className='flex sm:space-x-5 items-center'>
             {actionsElement}
-            <div className='rounded cursor-pointer px-1'
+            <div className='rounded cursor-pointer px-1 z-10'
                 onClick={expandAction}
                 ref={expandableRef}>
                 <EllipsisHorizontalIcon className='w-6 h-6 text-gray-reddit rounded hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit' />
