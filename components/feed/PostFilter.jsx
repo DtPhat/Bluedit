@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/24/solid'
 function PostFilter({postFilter, setPostFilter}) {
     const activeClassName = 'bg-graywhite-reddit dark:bg-grayblack-reddit text-blue-500 dark:text-white-reddit'
-    const hoverClassName = 'hover:bg-graywhite-reddit hover:dark:bg-grayblack-reddit'
+    const hoverClassName = 'hover:bg-gray-100 hover:dark:bg-grayblack-reddit'
     return (
         <div className="border border-white-reddit dark:border-grayblack-reddit font-semibold p-3 flex items-center space-x-4 rounded bg-white-reddit dark:bg-black-reddit text-gray-reddit">
             <div className={`flex space-x-1 rounded-3xl p-1 cursor-pointer ${postFilter==='hot'&&activeClassName} ${hoverClassName}`}

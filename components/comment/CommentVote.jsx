@@ -28,7 +28,7 @@ function CommentVote({ upvotes, downvotes }) {
     return (
         <div className={`flex w-full items-center rounded space-x-1`}>
             <div onClick={upvote}><UpvoteIcon active={upvoted} /></div>
-            <div className='font-bold select-none flex justify-center items-center w-5'>
+            <div className='font-bold select-none flex justify-center items-center w-6'>
                 {votes ? <span className='text-sm'>{votes}</span> : <span className='text-xs'>Vote</span>}
             </div>
             <div onClick={downvote}><DownvoteIcon active={downvoted} /></div>

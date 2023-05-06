@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 export default function useExpandableComponent(initialVisibility: boolean) {
     const expandableRef = useRef<HTMLElement>(null)
     const [expanding, setExpanding] = useState(initialVisibility)

@@ -35,7 +35,7 @@ function Post({ id, title, author, content, type, upvotes, downvotes, inserted_a
                         <p className='px-2 whitespace-pre-line'>{content}</p>
                     }
                     {type == "image" &&
-                        <div className='flex items-center justify-center bg-graywhite-reddit dark:bg-grayblack-reddit min-h-[20rem]'>
+                        <div className='flex items-center justify-center bg-white-reddit dark:bg-grayblack-reddit min-h-[20rem]'>
                             {loading ?
                                 <Loading /> :
                                 <a href={image} target='_blank'>

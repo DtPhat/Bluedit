@@ -1,8 +1,10 @@
 import { supabase } from '../../client'
 import { useEffect, useState, useContext } from 'react'
+import { useRouter } from 'next/router'
 import Post from '../post'
 import PostCreater from './PostCreater'
 import PostFilter from './PostFilter'
+import NoPosts from './NoPosts'
 import Link from 'next/link'
 import Loading from '../loading'
 import { RedditContext } from '../../context/RedditContext'
@@ -11,20 +13,25 @@ export default function Feed() {
     const [posts, setPosts] = useState([])
     const { currentUser } = useContext(RedditContext)
     const [postFilter, setPostFilter] = useState('hot')
-    const field = postFilter==='hot'&&'id' || postFilter==='new'&&'inserted_at' || postFilter==='top'&&'upvotes'
-    const isAscending =  postFilter==='hot'&&true || postFilter==='new'&&false || postFilter==='top'&&false
+    const field = postFilter === 'hot' && 'id' || postFilter === 'new' && 'inserted_at' || postFilter === 'top' && 'upvotes'
+    const isAscending = postFilter === 'hot' && true || postFilter === 'new' && false || postFilter === 'top' && false
+
+    const router = useRouter()
+    const keyword = router.query.keyword ? router.query.keyword : ''
     useEffect(() => {
         fetchPosts()
-    }, [postFilter]);
+    }, [postFilter, keyword]);
     useEffect(() => {
         saveAndUpdateUser()
     }, [currentUser]);
 
+    console.log(keyword);
     async function fetchPosts() {
         try {
             const { data } = await supabase
                 .from('feed')
                 .select('*')
+                .ilike('title', '%' + keyword + '%')
                 .order(field, { ascending: isAscending })
             setPosts(data)
         } catch (error) {
@@ -55,8 +62,10 @@ export default function Feed() {
     return (
         <section className='space-y-4 pb-12'>
             <PostCreater />
-            <PostFilter postFilter={postFilter} setPostFilter={setPostFilter}/>
-            <div>{loading ? <Loading /> : PostList}</div>
+            <PostFilter postFilter={postFilter} setPostFilter={setPostFilter} />
+            {loading ? <Loading /> :
+                posts.length > 0 ? PostList :
+                    <NoPosts keyword={keyword}/>}
         </section>
     )
 }

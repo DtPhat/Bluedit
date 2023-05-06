@@ -51,7 +51,7 @@ function CommentSection({ postId }) {
                 <div className='py-3'>
                     <div>
                         <div className='text-sm'>Comment as <Link href={`/user/${username}`} className='text-blue-400 cursor-pointer hover:underline'>{username}</Link></div>
-                        <div className='flex flex-col border border-gray-300 dark:border-grayblack-reddit pb-4 relative rounded focus-within:border-black-reddit dark:focus-within:border-white-reddit '>
+                        <div className='flex flex-col border border-gray-300 dark:border-grayblack-reddit pb-4 relative rounded focus-within:border-black-reddit dark:focus-within:border-white-reddit'>
                             <textarea
                                 className='rounded bg-white-reddit dark:bg-black-reddit py-2 px-4 outline-none group-focus:bg-white'
                                 rows={7}

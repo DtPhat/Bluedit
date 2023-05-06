@@ -27,16 +27,16 @@ export default function Settings() {
     router.push('/login')
   }
   const logOut = async () => {
-    await supabase.auth.signOut();
+    await supabase.auth.signOut(); 
     router.reload()
   }
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button>
-          <div className='flex rounded lg:min-w-[14rem] items-center font-medium border-2 border-transparent hover:border-2 hover:border-graywhite-reddit dark:hover:border-grayblack-reddit space-x-2 cursor-pointer'>
+          <div className='flex rounded lg:min-w-[14rem] items-center font-medium border border-transparent hover:border-gray-200 dark:hover:border-grayblack2-reddit py-0.5 space-x-2 cursor-pointer'>
             <img
-              src={currentUser ? currentUser.user_metadata.avatar_url : "/avatar_default.png"}
+              src={currentUser ? currentUser.user_metadata.avatar_url : "/avatar-default.png"}
               className='h-9 w-9 min-w-[36px] object-cover p-1 rounded-full'
               alt='avatar'
               width={36} />
