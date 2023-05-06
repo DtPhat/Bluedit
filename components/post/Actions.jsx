@@ -9,23 +9,26 @@ import {
 } from '@heroicons/react/24/outline'
 import { supabase } from '../../client'
 import { useRouter } from 'next/router'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { RedditContext } from '../../context/RedditContext'
 import useExpandableComponent from '../../hooks/useExpandableComponent'
 function Actions({ postId, postAuthor }) {
+    const [commentAmount, setCommentAmount] = useState(0)
+    useEffect(() => {
+        countComment()
+    }, []);
+    const countComment = async () => {
+        const { count, error } = await supabase
+            .from('comments')
+            .select('*', { count: 'exact', head: true })
+            .match({ post_id: postId })
+        if (error) {
+            console.log(error)
+        }
+        setCommentAmount(count)
+    }
     const { currentUser } = useContext(RedditContext)
     const user = currentUser ? currentUser.user_metadata.full_name : "Blueditor"
-    const actionsElement = actions.map((item, i) => {
-        return (
-            <button
-                className='flex items-center text-gray-reddit font-bold rounded hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit p-1'
-                key={i}
-                onClick={(e) => e.preventDefault()}>
-                <item.icon className='w-6 h-6' />
-                <span className='pl-1 text-xs'>{item.text}</span>
-            </button>
-        )
-    })
     const { expandableRef, expanding, setExpanding } = useExpandableComponent(false)
     const expandAction = (e) => {
         e.preventDefault()
@@ -55,6 +58,19 @@ function Actions({ postId, postAuthor }) {
             })
         }
     }
+    const actionsElement = actions.map((item, i) => {
+        return (
+            <button
+                key={i}
+                className='flex items-center text-gray-reddit font-bold rounded hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit p-1'
+                onClick={(e) => { item.text !== 'Comment' && e.preventDefault() }}>
+                <item.Icon className='w-6 h-6' />
+                <span className='pl-1 text-xs'>
+                    {item.text === 'Comment' ? `${commentAmount} Comment${commentAmount !== 1 ? 's' : ''}` : item.text}
+                </span>
+            </button>
+        )
+    })
     return (
         <div className='flex sm:space-x-5 items-center'>
             {actionsElement}
@@ -89,19 +105,19 @@ function Actions({ postId, postAuthor }) {
 }
 const actions = [
     {
-        icon: ChatBubbleLeftIcon,
+        Icon: ChatBubbleLeftIcon,
         text: 'Comment'
     },
     {
-        icon: GiftIcon,
+        Icon: GiftIcon,
         text: 'Award'
     },
     {
-        icon: ArrowUturnRightIcon,
+        Icon: ArrowUturnRightIcon,
         text: 'Share'
     },
     {
-        icon: BookmarkIcon,
+        Icon: BookmarkIcon,
         text: 'Save'
     },
 ]

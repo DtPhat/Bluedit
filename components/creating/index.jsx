@@ -8,7 +8,7 @@ export default function NewPost() {
     const { currentUser } = useContext(RedditContext)
     const router = useRouter()
     const initialType = router.query.type
-    const [loading, setLoading] = useState(false)
+    const [submitting, setSubmitting] = useState(false)
     const [type, setType] = useState(initialType || "text")
     const [newPost, setNewPost] = useState({ title: "", author: currentUser ? currentUser.user_metadata.full_name : "Blueditor", content: "" })
     const [imgFile, setImgFile] = useState("")
@@ -16,9 +16,9 @@ export default function NewPost() {
     const getFiles = useRef()
     const active = 'border-b-2 border-b-blue-500 text-blue-500 dark:border-b-graywhite-reddit dark:text-graywhite-reddit bg-blue-50 dark:bg-grayblack-reddit'
     async function createPost() {
-        if (!content || !title) return
+        if (!content || !title || submitting) return
+        setSubmitting(true)
         try {
-            setLoading(true)
             await supabase
                 .from('feed')
                 .insert([
@@ -66,117 +66,115 @@ export default function NewPost() {
                         <ChevronDownIcon className='w-5 h-5' />
                     </div>
                 </div>
-                {loading ? <Loading /> :
-                    <div className='flex flex-col space-y-3 rounded bg-white-reddit dark:bg-black-reddit relative '>
-                        <div className='flex justify-between'>
-                            <div
-                                onClick={() => setType("text")}
-                                className={`cursor-pointer flex space-x-1 border-b border-r border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold ${type === 'text' && active}`}>
-                                <DocumentTextIcon className='w-6 h-6' />
-                                <span className='select-none'>Post</span>
-                            </div>
-                            <div
-                                onClick={() => setType("image")}
-                                className={`cursor-pointer flex space-x-1 border-b border-r border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold ${type === 'image' && active}`}>
-                                <PhotoIcon className='w-6 h-6' />
-                                <span className='select-none'>Images</span>
-                            </div>
-                            <div
-                                onClick={() => setType("link")}
-                                className={`cursor-pointer flex space-x-1 border-b border-r border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold ${type === 'link' && active}`}>
-                                <LinkIcon className='w-6 h-6' />
-                                <span className='select-none'>Link</span>
-                            </div>
-                            <div className='cursor-not-allowed flex space-x-1 border-b border-r border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold'>
-                                <Bars3CenterLeftIcon className='w-6 h-6' />
-                                <span className='select-none'>Poll</span>
-                            </div>
-                            <div className='cursor-not-allowed flex space-x-1 border-b border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold'>
-                                <MicrophoneIcon className='w-6 h-6' />
-                                <span className='select-none'>Talk</span>
-                            </div>
+                <div className='flex flex-col space-y-3 rounded bg-white-reddit dark:bg-black-reddit relative'>
+                    <div className='flex justify-between min-w-[28rem]'>
+                        <div
+                            onClick={() => setType("text")}
+                            className={`cursor-pointer flex space-x-1 border-b border-r border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold ${type === 'text' && active}`}>
+                            <DocumentTextIcon className='w-6 h-6' />
+                            <span className='select-none'>Post</span>
                         </div>
-                        <div className='space-y-3 p-3'>
-                            <div className=' flex items-center'>
-                                <input
-                                    className='w-full border-2 border-graywhite-reddit dark:border-grayblack-reddit p-2 rounded bbg-white-reddit dark:bg-black-reddit'
-                                    type="text"
-                                    placeholder='Title'
-                                    onChange={e => setNewPost({ ...newPost, title: e.target.value })}
-                                />
-                                <span className='text-xs text-gray-500 absolute right-5'>{title.length}/300</span>
-                            </div>
-
-                            {/*Change content here*/}
-                            {type === "text" &&
-                                <div className='border-b border-graywhite-reddit dark:border-grayblack-reddit pb-4'>
-                                    <textarea
-                                        className='w-full border-2 border-graywhite-reddit dark:border-grayblack-reddit p-2 rounded bg-white-reddit dark:bg-black-reddit'
-                                        rows={8}
-                                        cols={10}
-                                        placeholder='Text (required)'
-                                        onChange={e => setNewPost({ ...newPost, content: e.target.value })}
-                                    />
-                                </div>}
-                            {type === "image" &&
-                                <div className='border-b border-graywhite-reddit dark:border-grayblack-reddit pb-4'>
-                                    {!imgFile ?
-                                        <div className='border-2 border-dashed border-gray-200 dark:border-grayblack2-reddit w-full h-[20rem]'>
-                                            <button
-                                                className='w-full h-full text-xl text-blue-500 dark:text-gray-reddit font-semibold'
-                                                onClick={() => getFiles.current.click()}>
-                                                Upload images
-                                            </button>
-                                            <input
-                                                className='hidden'
-                                                type="file"
-                                                accept='image/'
-                                                ref={getFiles}
-                                                onChange={handleImage}
-                                            />
-                                        </div> :
-                                        <div className='flex items-center justify-center bg-graywhite-reddit dark:bg-grayblack-reddit min-h-[20rem]' >
-                                            <img
-                                                className='max-h-[32rem]'
-                                                src={URL.createObjectURL(imgFile)}
-                                                alt="not found"
-                                                height={512} />
-                                        </div>}
-                                </div>}
-                            {type === "link" &&
-                                <div className='border-b border-graywhite-reddit dark:border-grayblack-reddit pb-4'>
-                                    <input
-                                        className='w-full text-blue-600 dark:text-blue-400 border-2 border-graywhite-reddit dark:border-grayblack-reddit rounded bg-white-reddit dark:bg-black-reddit p-2 pb-12 text-start'
-                                        type="url"
-                                        pattern="https://.*"
-                                        placeholder='Url'
-                                        onChange={e => setNewPost({ ...newPost, content: e.target.value })}
-                                    />
-                                </div>}
-                            <div className='flex justify-end space-x-2 p-2'>
-                                {type == "image" ?
-                                    <button
-                                        className='border border-blue-400 dark:border-gray-reddit text-blue-400 dark:text-gray-reddit py-1 px-5 rounded-full font-bold'
-                                        onClick={(e) => {
-                                            setNewPost({ ...newPost, content: e.target.value })
-                                            setImgFile("")
-                                        }}>
-                                        Cancel
-                                    </button> :
-                                    <button
-                                        className='border border-blue-500 dark:border-gray-reddit text-blue-500 dark:text-gray-reddit py-1 px-5 rounded-full font-bold'
-                                    >Save Draft</button>}
-                                <button
-                                    className={`bg-blue-500 dark:bg-white-reddit border-blue-500 dark:border-gray-reddit px-5 rounded-full font-bold
-                                    ${content && title ? "text-white-reddit dark:text-black-reddit" : "text-blue-300 dark:text-gray-reddit"}`}
-                                    onClick={createPost}>
-                                    Post
-                                </button>
-                            </div>
-
+                        <div
+                            onClick={() => setType("image")}
+                            className={`cursor-pointer flex space-x-1 border-b border-r border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold ${type === 'image' && active}`}>
+                            <PhotoIcon className='w-6 h-6' />
+                            <span className='select-none'>Images</span>
+                        </div>
+                        <div
+                            onClick={() => setType("link")}
+                            className={`cursor-pointer flex space-x-1 border-b border-r border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold ${type === 'link' && active}`}>
+                            <LinkIcon className='w-6 h-6' />
+                            <span className='select-none'>Link</span>
+                        </div>
+                        <div className='cursor-not-allowed flex space-x-1 border-b border-r border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold'>
+                            <Bars3CenterLeftIcon className='w-6 h-6' />
+                            <span className='select-none'>Poll</span>
+                        </div>
+                        <div className='cursor-not-allowed flex space-x-1 border-b border-graywhite-reddit dark:border-grayblack-reddit w-full items-center justify-center py-3 text-gray-reddit font-semibold'>
+                            <MicrophoneIcon className='w-6 h-6' />
+                            <span className='select-none'>Talk</span>
                         </div>
                     </div>
-                }
+                    <div className='space-y-3 p-3'>
+                        <div className=' flex items-center'>
+                            <input
+                                className='w-full border-2 border-graywhite-reddit dark:border-grayblack-reddit p-2 rounded bbg-white-reddit dark:bg-black-reddit'
+                                type="text"
+                                placeholder='Title'
+                                onChange={e => setNewPost({ ...newPost, title: e.target.value })}
+                            />
+                            <span className='text-xs text-gray-500 absolute right-5'>{title.length}/300</span>
+                        </div>
+
+                        {/*Change content here*/}
+                        {type === "text" &&
+                            <div className='border-b border-graywhite-reddit dark:border-grayblack-reddit pb-4'>
+                                <textarea
+                                    className='w-full border-2 border-graywhite-reddit dark:border-grayblack-reddit p-2 rounded bg-white-reddit dark:bg-black-reddit'
+                                    rows={8}
+                                    cols={10}
+                                    placeholder='Text (required)'
+                                    onChange={e => setNewPost({ ...newPost, content: e.target.value })}
+                                />
+                            </div>}
+                        {type === "image" &&
+                            <div className='border-b border-graywhite-reddit dark:border-grayblack-reddit pb-4'>
+                                {!imgFile ?
+                                    <div className='border-2 border-dashed border-gray-200 dark:border-grayblack2-reddit w-full h-[20rem]'>
+                                        <button
+                                            className='w-full h-full text-xl text-blue-500 dark:text-gray-reddit font-semibold'
+                                            onClick={() => getFiles.current.click()}>
+                                            Upload images
+                                        </button>
+                                        <input
+                                            className='hidden'
+                                            type="file"
+                                            accept='image/'
+                                            ref={getFiles}
+                                            onChange={handleImage}
+                                        />
+                                    </div> :
+                                    <div className='flex items-center justify-center bg-graywhite-reddit dark:bg-grayblack-reddit min-h-[20rem]' >
+                                        <img
+                                            className='max-h-[32rem]'
+                                            src={URL.createObjectURL(imgFile)}
+                                            alt="not found"
+                                            height={512} />
+                                    </div>}
+                            </div>}
+                        {type === "link" &&
+                            <div className='border-b border-graywhite-reddit dark:border-grayblack-reddit pb-4'>
+                                <input
+                                    className='w-full text-blue-600 dark:text-blue-400 border-2 border-graywhite-reddit dark:border-grayblack-reddit rounded bg-white-reddit dark:bg-black-reddit p-2 pb-12 text-start'
+                                    type="url"
+                                    pattern="https://.*"
+                                    placeholder='Url'
+                                    onChange={e => setNewPost({ ...newPost, content: e.target.value })}
+                                />
+                            </div>}
+                        <div className='flex justify-end space-x-2 p-2'>
+                            {type == "image" ?
+                                <button
+                                    className='border border-blue-400 dark:border-gray-reddit text-blue-400 dark:text-gray-reddit py-1 px-5 rounded-full font-bold'
+                                    onClick={(e) => {
+                                        setNewPost({ ...newPost, content: e.target.value })
+                                        setImgFile("")
+                                    }}>
+                                    Cancel
+                                </button> :
+                                <button
+                                    className='border border-blue-500 dark:border-gray-reddit text-blue-400 dark:text-gray-reddit py-1 px-5 rounded-full font-bold'
+                                >Save Draft</button>}
+                            <button
+                                className={`bg-blue-500 dark:bg-white-reddit border-blue-500 dark:border-gray-reddit px-5 rounded-full font-bold
+                                ${content && title ? "text-white-reddit dark:text-black-reddit hover:opacity-90" : "text-blue-300 dark:text-gray-reddit cursor-not-allowed"}`}
+                                onClick={createPost}>
+                                {submitting ? <Loading size={'w-6 h-6'} /> : <span>Post</span>}
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     )

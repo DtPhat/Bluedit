@@ -40,23 +40,23 @@ export default function Feed() {
             name: currentUser.user_metadata.full_name,
             profileImage: currentUser.user_metadata.avatar_url,
         }, {
-            onConflict: 'email'
+            onConflict: 'name'
         })
     }
     const PostList = posts.map(post =>
         <Link href={`/post/${post.id}`} key={post.id} legacyBehavior>
             <div
-                className='w-full border-2 cursor-pointer border-graywhite-reddit dark:border-grayblack-reddit rounded my-4 bg-white-reddit dark:bg-black-reddit hover:border-white-reddit'
+                className='w-full border cursor-pointer border-graywhite-reddit dark:border-grayblack-reddit rounded my-4 bg-white-reddit dark:bg-black-reddit hover:border-gray-reddit hover:dark:border-gray-500'
                 key={post.id}>
                 <Post {...post} />
             </div>
         </Link>
     )
     return (
-        <div className='space-y-4 pb-12'>
+        <section className='space-y-4 pb-12'>
             <PostCreater />
             <PostFilter postFilter={postFilter} setPostFilter={setPostFilter}/>
             <div>{loading ? <Loading /> : PostList}</div>
-        </div>
+        </section>
     )
 }

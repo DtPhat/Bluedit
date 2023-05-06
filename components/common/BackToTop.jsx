@@ -1,29 +1,40 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 function BackToTop() {
-    const [visible, setVisible] = useState(false)
+    const [fixed, setFixed] = useState(false)
+
+    const targetRef = useRef(null);
+
     useEffect(() => {
-        window.addEventListener('scroll', toggleVisible)
+        const handleScroll = () => {
+            setFixed(isInViewport(targetRef.current))
+        };
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, []);
-    const toggleVisible = () => {
-        if (document.documentElement.scrollTop > 500) {
-            setVisible(true)
-        } else {
-            setVisible(false)
-        }
-    }
+
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'auto'
+            behavior: 'smooth'
         })
     }
     return (
-        <button
-            className={`opacity-90 hover:opacity-80 fixed z-10 bottom-4 rounded-full bg-blue-500 dark:bg-white-reddit text-white-reddit dark:text-black-reddit font-bold px-4 py-1 ${visible ? 'block' : 'hidden'}`}
-            onClick={scrollToTop}>
-            Back to Top
-        </button>
+        <div className='flex w-full justify-center' ref={targetRef}>
+            <button
+                className={`${fixed ? 'fixed z-20 bottom-4' : ''} hover:opacity-80 rounded-full bg-blue-500 dark:bg-white-reddit text-white-reddit dark:text-black-reddit font-bold px-4 py-1 `}
+                onClick={scrollToTop}>
+                Back to Top
+            </button>
+        </div>
     );
 }
 
+const isInViewport = (element) => {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.bottom + 48 <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+};
 export default BackToTop;

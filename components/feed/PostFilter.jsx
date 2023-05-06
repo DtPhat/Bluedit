@@ -10,7 +10,7 @@ function PostFilter({postFilter, setPostFilter}) {
     const activeClassName = 'bg-graywhite-reddit dark:bg-grayblack-reddit text-blue-500 dark:text-white-reddit'
     const hoverClassName = 'hover:bg-graywhite-reddit hover:dark:bg-grayblack-reddit'
     return (
-        <div className="border-2 border-white-reddit dark:border-grayblack-reddit font-semibold p-3 flex items-center space-x-4 rounded bg-white-reddit dark:bg-black-reddit text-gray-reddit">
+        <div className="border border-white-reddit dark:border-grayblack-reddit font-semibold p-3 flex items-center space-x-4 rounded bg-white-reddit dark:bg-black-reddit text-gray-reddit">
             <div className={`flex space-x-1 rounded-3xl p-1 cursor-pointer ${postFilter==='hot'&&activeClassName} ${hoverClassName}`}
             onClick={()=>setPostFilter('hot')}>
                 <FireIcon className='w-6 h-6' />

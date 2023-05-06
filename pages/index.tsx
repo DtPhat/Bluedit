@@ -23,9 +23,7 @@ export default function Home() {
             </div>
             <div className='hidden lg:block'>
               <Info />
-              <div className='flex w-full justify-center'>
-                <BackToTop />
-              </div>
+              <BackToTop />
             </div>
           </div>
         </main>

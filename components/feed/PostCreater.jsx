@@ -5,8 +5,8 @@ import Link from 'next/link';
 function PostCreater() {
     const { currentUser } = useContext(RedditContext)
     return (
-        <div className="border-2 border-graywhite-reddit dark:border-grayblack-reddit px-3 py-1 flex items-center space-x-4 rounded bg-white-reddit dark:bg-black-reddit">
-            <img src={currentUser ? currentUser.user_metadata.avatar_url : "https://www.redditstatic.com/avatars/avatar_default_02_545452.png"} alt="avatar"
+        <div className="border border-graywhite-reddit dark:border-grayblack-reddit px-3 py-1 flex items-center space-x-4 rounded bg-white-reddit dark:bg-black-reddit">
+            <img src={currentUser ? currentUser.user_metadata.avatar_url : "/avatar_default.png"} alt="avatar"
                 className="w-12 h-12 rounded-full object-cover cursor-pointer"
                 width={48}
             />

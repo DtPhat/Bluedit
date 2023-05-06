@@ -2,7 +2,7 @@ import { UpvoteIcon } from '../../assets/UpvoteIcon'
 import { DownvoteIcon } from '../../assets/DownvoteIcon'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-function Vote({ upvotes, downvotes }) {
+function CommentVote({ upvotes, downvotes }) {
     const router = useRouter()
     const [downvoted, setDownvoted] = useState(false)
     const [upvoted, setUpvoted] = useState(false)
@@ -26,16 +26,14 @@ function Vote({ upvotes, downvotes }) {
         setDownvoted(true)
     }
     return (
-        <div className={`flex flex-col w-10 items-center pt-2 rounded ${router.pathname === '/' ? 'bg-graywhite-reddit dark:bg-black2-reddit' : ''}`}>
-            <div onClick={upvote}>
-                <UpvoteIcon active={upvoted} />
+        <div className={`flex w-full items-center rounded space-x-1`}>
+            <div onClick={upvote}><UpvoteIcon active={upvoted} /></div>
+            <div className='font-bold select-none flex justify-center items-center w-5'>
+                {votes ? <span className='text-sm'>{votes}</span> : <span className='text-xs'>Vote</span>}
             </div>
-            <div className='font-bold select-none'>{votes ? <span className='text-sm'>{votes}</span> : <span className='text-xs'>Vote</span>}</div>
-            <div onClick={downvote}>
-                <DownvoteIcon active={downvoted} />
-            </div>
+            <div onClick={downvote}><DownvoteIcon active={downvoted} /></div>
         </div>
     );
 }
 
-export default Vote;
+export default CommentVote;
