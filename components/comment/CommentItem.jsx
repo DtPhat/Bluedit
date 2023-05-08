@@ -17,7 +17,7 @@ function CommentItem({ item }) {
     const { comment_id, created_at, post_id, username, comment, downvotes, upvotes, users: { profileImage } } = item
     const [editing, setEditting] = useState(false)
     const [displayingContent, setDisplayingContent] = useState(true)
-    const { expandableRef, expanding, setExpanding } = useExpandableComponent(false)
+    const { expandableRef, expanding, setExpanding, isOffScreen } = useExpandableComponent(false)
     const { currentUser } = useContext(RedditContext)
     const currentUsername = currentUser ? currentUser.user_metadata.full_name : "Blueditor"
     const router = useRouter()
@@ -72,27 +72,22 @@ function CommentItem({ item }) {
                                     ref={expandableRef}>
                                     <EllipsisHorizontalIcon className='w-6 h-6' />
                                     {expanding &&
-                                        <div className='absolute border-2 border-gray-200 dark:border-gray-600 rounded bg-white-reddit dark:bg-black-reddit mt-1 '>
+                                        <div className={`absolute border border-gray-400 dark:border-gray-600 rounded bg-white-reddit dark:bg-black-reddit ${isOffScreen ? 'mt-[-2rem]' : 'mt-1'}`}>
                                             <button className='flex w-full py-1 px-2 text-gray-reddit bg-blackwhite-reddit hover:bg-gray-200 dark:hover:bg-grayblack-reddit '
                                                 onClick={deleteComment}
-                                                style={{
-                                                    cursor: username === "Blueditor" || currentUser === username ? "" : "not-allowed"
-                                                }}>
+                                                style={{cursor: username === "Blueditor" || currentUsername === username ? "" : "not-allowed"}}>
                                                 <TrashIcon className='w-6 h-6' />
                                                 <span className='pl-2 font-semibold'>Delete</span>
                                             </button>
                                             <hr className='border-gray-200 dark:border-gray-600' />
                                             <button className='flex w-full py-1 px-2 text-gray-reddit hover:bg-gray-200 dark:hover:bg-grayblack-reddit '
                                                 onClick={() => setEditting(true)}
-                                                style={{
-                                                    cursor: username === "Blueditor" || currentUser === username ? "" : "not-allowed"
-                                                }}>
+                                                style={{cursor: username === "Blueditor" || currentUsername === username ? "" : "not-allowed"}}>
                                                 <PencilIcon className='w-6 h-6' />
                                                 <span className='pl-2 font-semibold'>Edit</span>
                                             </button>
                                         </div>}
                                 </div>
-
                             </div>
                         </div>}
                 </div>}

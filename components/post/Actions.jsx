@@ -15,7 +15,7 @@ import useExpandableComponent from '../../hooks/useExpandableComponent'
 function Actions({ postId, postAuthor }) {
     const [commentAmount, setCommentAmount] = useState(0)
     const { currentUser } = useContext(RedditContext)
-    const { expandableRef, expanding, setExpanding } = useExpandableComponent(false)
+    const { expandableRef, expanding, setExpanding, isOffScreen } = useExpandableComponent(false)
     useEffect(() => {
         countComment()
     }, []);
@@ -79,7 +79,7 @@ function Actions({ postId, postAuthor }) {
                 ref={expandableRef}>
                 <EllipsisHorizontalIcon className='w-6 h-6 text-gray-reddit rounded hover:bg-gray-200 dark:hover:bg-grayblack-reddit' />
                 {expanding &&
-                    <div className='absolute border-2 border-gray-200 dark:border-gray-600 rounded bg-white-reddit dark:bg-black-reddit mt-1 '>
+                    <div className={`absolute border-2 border-gray-200 dark:border-gray-600 rounded bg-white-reddit dark:bg-black-reddit ${isOffScreen ? 'mt-[-2rem]' : 'mt-1'} `}>
                         <button className='flex w-full py-1 px-2 text-gray-reddit hover:bg-gray-200 dark:hover:bg-grayblack-reddit '
                             onClick={editPost}
                             style={{
@@ -102,22 +102,17 @@ function Actions({ postId, postAuthor }) {
         </div>
     );
 }
-const actions = [
-    {
+const actions = [{
         Icon: ChatBubbleLeftIcon,
         text: 'Comment'
-    },
-    {
+    }, {
         Icon: GiftIcon,
         text: 'Award'
-    },
-    {
+    }, {
         Icon: ArrowUturnRightIcon,
         text: 'Share'
-    },
-    {
+    }, {
         Icon: BookmarkIcon,
         text: 'Save'
-    },
-]
+    }]
 export default Actions;

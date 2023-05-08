@@ -47,7 +47,7 @@ export default function Feed() {
             name: currentUser.user_metadata.full_name,
             profileImage: currentUser.user_metadata.avatar_url,
         }, {
-            onConflict: 'name'
+            onConflict: 'email'
         })
     }
     const PostList = posts.map(post =>
@@ -60,7 +60,7 @@ export default function Feed() {
         </Link>
     )
     return (
-        <section className='space-y-4 pb-12'>
+        <section className='space-y-4 pb-8'>
             <PostCreater />
             <PostFilter postFilter={postFilter} setPostFilter={setPostFilter} />
             {loading ? <Loading /> :

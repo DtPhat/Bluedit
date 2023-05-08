@@ -1,7 +1,7 @@
 const showTime = (inserted_at : Date) : String => {
     const today = new Date();
     const insertedDay = new Date(inserted_at)
-    const timediff = today.getTime() - insertedDay.getTime();
+    const timediff = today.getTime() - insertedDay.getTime() + 1000;
     const daydiff = Math.round(timediff / (1000 * 3600 * 24))
     const hourdiff = Math.round(timediff / (1000 * 3600))
     const minutediff = Math.round(timediff / (1000 * 60))

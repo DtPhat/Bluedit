@@ -44,8 +44,8 @@ function CommentEditing({ comment_id, comment, setEditing }) {
                     Cancel
                 </div>
                 <div
-                    className={`bg-gray-reddit dark:bg-white-reddit text-gray-300 dark:text-gray-reddit px-4 p-0.5 rounded-full text-sm font-bold cursor-pointer
-                                    ${newComment ? 'text-white-reddit dark:text-black-reddit bg-blue-500 hover:opacity-90' : 'cursor-not-allowed'}`}
+                    className={`bg-gray-reddit dark:bg-white-reddit dark:text-gray-reddit w-24 text-center p-0.5 rounded-full text-sm font-bold cursor-pointer
+                                    ${newComment && !submitting ? 'text-white-reddit dark:text-black-reddit bg-blue-500 hover:opacity-90' : 'text-gray-300 cursor-not-allowed'}`}
                     onClick={updateComment}>
                     {submitting ? <Loading size={"w-6 h-6"} /> : <span>Save edit</span>}
                 </div>

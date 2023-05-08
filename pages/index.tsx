@@ -21,7 +21,7 @@ export default function Home() {
             <div className='flex-1'>
               <Feed />
             </div>
-            <div className='hidden lg:block'>
+            <div className='hidden lg:block mb-4'>
               <Info />
               <BackToTop />
             </div>

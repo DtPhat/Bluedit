@@ -59,7 +59,7 @@ function PostPage({ post }) {
                 <title>{post.title}</title>
             </Head>
             <Layout>
-                <div className='border-2 rounded border-graywhite-reddit dark:border-grayblack-reddit mb-12 bg-white-reddit dark:bg-black-reddit'>
+                <div className='border-2 rounded border-graywhite-reddit dark:border-grayblack-reddit mb-4 bg-white-reddit dark:bg-black-reddit'>
                     <Post {...post} />
                     <CommentSection postId = {post.id}/>
                 </div>

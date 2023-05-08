@@ -18,9 +18,9 @@ function Banner() {
                         <h1 className="text-3xl font-bold">Bluedit</h1>
                         <span className="text-gray-reddit">r/Bluedit</span>
                     </div>
-                    <div className="w-24 after:content-['Joined'] hover:after:content-['Leave'] font-medium text-center border border-blue-500 dark:border-white-reddit text-blue-500 dark:text-white-reddit rounded-full py-1 mb-5 cursor-pointer">
+                    <div className="w-24 after:content-['Joined'] hover:after:content-['Leave'] font-medium text-center border border-blue-500 dark:border-white-reddit text-blue-500 dark:text-white-reddit rounded-full py-1 mb-5 cursor-pointer hover:bg-blue-50 dark:hover:bg-grayblack-reddit">
                     </div>
-                    <BellIcon className='w-8 h-8 border border-blue-500 dark:border-white-reddit text-blue-500 dark:text-white-reddit rounded-full p-1 mb-5 cursor-pointer' />
+                    <BellIcon className='w-8 h-8 border border-blue-500 dark:border-white-reddit text-blue-500 dark:text-white-reddit rounded-full p-1 mb-5 cursor-pointer active:bg-blue-50 dark:active:bg-grayblack-reddit' />
                 </div>
                 <div className='space-x-4'>
                     <button className='border-b-4 px-2'>Posts</button>

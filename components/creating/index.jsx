@@ -53,8 +53,8 @@ export default function NewPost() {
     return (
         <div className='flex justify-center'>
             <div className='max-w-7xl w-full space-y-4'>
-                <h1 className='pb-3 border-b border-graywhite-reddit dark:border-grayblack-reddit text-xl font-medium'>Create a post</h1>
-                <div className='flex w-80 border-2 border-graywhite-reddit dark:border-grayblack-reddit p-1 space-x-2 items-center mb-3 rounded bg-white-reddit dark:bg-black-reddit'>
+                <h1 className='pb-3 border-b border-graywhite-100 dark:border-grayblack-reddit text-xl font-medium'>Create a post</h1>
+                <div className='flex w-80 border-2 border-gray-200 dark:border-grayblack-reddit p-1 space-x-2 items-center mb-3 rounded bg-white-reddit dark:bg-black-reddit'>
                     <img
                         src='https://i.ibb.co/x7NbSGH/Blue-Creep.jpg"'
                         width={30}
@@ -98,7 +98,7 @@ export default function NewPost() {
                     <div className='space-y-3 p-3'>
                         <div className=' flex items-center'>
                             <input
-                                className='w-full border-2 border-graywhite-reddit dark:border-grayblack-reddit p-2 rounded bbg-white-reddit dark:bg-black-reddit'
+                                className='w-full border-2 border-gray-200 dark:border-grayblack-reddit p-2 rounded bbg-white-reddit dark:bg-black-reddit'
                                 type="text"
                                 placeholder='Title'
                                 onChange={e => setNewPost({ ...newPost, title: e.target.value })}
@@ -106,11 +106,10 @@ export default function NewPost() {
                             <span className='text-xs text-gray-500 absolute right-5'>{title.length}/300</span>
                         </div>
 
-                        {/*Change content here*/}
                         {type === "text" &&
                             <div className='border-b border-graywhite-reddit dark:border-grayblack-reddit pb-4'>
                                 <textarea
-                                    className='w-full border-2 border-graywhite-reddit dark:border-grayblack-reddit p-2 rounded bg-white-reddit dark:bg-black-reddit'
+                                    className='w-full border-2 border-gray-200 dark:border-grayblack-reddit p-2 rounded bg-white-reddit dark:bg-black-reddit'
                                     rows={8}
                                     cols={10}
                                     placeholder='Text (required)'
@@ -145,7 +144,7 @@ export default function NewPost() {
                         {type === "link" &&
                             <div className='border-b border-graywhite-reddit dark:border-grayblack-reddit pb-4'>
                                 <input
-                                    className='w-full text-blue-600 dark:text-blue-400 border-2 border-graywhite-reddit dark:border-grayblack-reddit rounded bg-white-reddit dark:bg-black-reddit p-2 pb-12 text-start'
+                                    className='w-full text-blue-600 dark:text-blue-400 border-2 border-gray-200 dark:border-grayblack-reddit rounded bg-white-reddit dark:bg-black-reddit p-2 pb-12 text-start'
                                     type="url"
                                     pattern="https://.*"
                                     placeholder='Url'

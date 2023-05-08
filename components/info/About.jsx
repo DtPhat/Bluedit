@@ -6,10 +6,6 @@ import {
 import { useRouter } from 'next/navigation'
 function About() {
     const router = useRouter()
-
-    function createPost() {
-        router.push('/new')
-    }
     return (
         <div className="max-w-[20rem] flex flex-col p-3 border-2 border-graywhite-reddit dark:border-grayblack-reddit rounded space-y-4 bg-white-reddit dark:bg-black-reddit">
             <div className="flex justify-between text-gray-reddit font-medium">
@@ -35,10 +31,9 @@ function About() {
                     <span className='text-gray-reddit text-xs'>Online</span>
                 </div>
             </div>
-
             <div className='flex justify-center border-b pb-4 border-gray-reddit'>
                 <button className='w-full hover:opacity-90 bg-blue-500 dark:bg-white-reddit text-white-reddit dark:text-black-reddit rounded-full p-1 font-bold'
-                    onClick={createPost}
+                    onClick={()=>{router.push('/new')}}
                 >Create Post</button>
             </div>
             <div className='flex items-center justify-between p-3'>
