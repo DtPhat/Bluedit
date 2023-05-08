@@ -43,8 +43,8 @@ function CommentItem({ item }) {
                     <div className='cursor-pointer' onClick={() => setDisplayingContent(!displayingContent)}>
                         <ArrowsPointingOutIcon className='w5 h-5 text-blue-500 dark:text-blue-300' />
                     </div>}
-                <img src={profileImage} alt="commenter" className="w-9 h-9 rounded-full object-cover cursor-pointer" />
-                <span className='font-semibold'>{username}</span>
+                <img src={profileImage} alt="commenter" className="w-9 h-9 rounded-full object-cover cursor-pointer" onClick={()=>router.push(`/user/${username}`)} />
+                <span className='font-semibold hover:underline cursor-pointer' onClick={()=>router.push(`/user/${username}`)}>{username}</span>
                 <span className='text-gray-reddit'>•</span>
                 <span className='text-gray-reddit'>{showTime(created_at)}</span>
             </div>
@@ -55,10 +55,10 @@ function CommentItem({ item }) {
                         onClick={() => setDisplayingContent(false)}>
                         <div className='border border-gray-200 dark:border-gray-reddit group-hover:border-blue-500 dark:group-hover:border-white-reddit'></div>
                     </div>
-                    {editing ? <CommentEditing comment_id={comment_id} comment={comment} setEditing={setEditting}/>
+                    {editing ? <CommentEditing comment_id={comment_id} comment={comment} setEditing={setEditting} />
                         : <div className='ml-4 mt-1'>
-                            <span className='p-2 text-lg'>{comment}</span>
-                            <div className='flex items-center  w-full pt-2 pl-1 space-x-4'>
+                            <div className='pl-2 whitespace-pre-line'>{comment}</div>
+                            <div className='flex items-center w-full pt-2 space-x-4'>
                                 <div><CommentVote upvotes={upvotes} downvotes={downvotes} /></div>
                                 <div className='flex items-center text-gray-reddit font-bold rounded hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit cursor-pointer'>
                                     <ChatBubbleLeftIcon className='w-6 h-6' />
@@ -75,14 +75,14 @@ function CommentItem({ item }) {
                                         <div className={`absolute border border-gray-400 dark:border-gray-600 rounded bg-white-reddit dark:bg-black-reddit ${isOffScreen ? 'mt-[-2rem]' : 'mt-1'}`}>
                                             <button className='flex w-full py-1 px-2 text-gray-reddit bg-blackwhite-reddit hover:bg-gray-200 dark:hover:bg-grayblack-reddit '
                                                 onClick={deleteComment}
-                                                style={{cursor: username === "Blueditor" || currentUsername === username ? "" : "not-allowed"}}>
+                                                style={{ cursor: username === "Blueditor" || currentUsername === username ? "" : "not-allowed" }}>
                                                 <TrashIcon className='w-6 h-6' />
                                                 <span className='pl-2 font-semibold'>Delete</span>
                                             </button>
                                             <hr className='border-gray-200 dark:border-gray-600' />
                                             <button className='flex w-full py-1 px-2 text-gray-reddit hover:bg-gray-200 dark:hover:bg-grayblack-reddit '
                                                 onClick={() => setEditting(true)}
-                                                style={{cursor: username === "Blueditor" || currentUsername === username ? "" : "not-allowed"}}>
+                                                style={{ cursor: username === "Blueditor" || currentUsername === username ? "" : "not-allowed" }}>
                                                 <PencilIcon className='w-6 h-6' />
                                                 <span className='pl-2 font-semibold'>Edit</span>
                                             </button>
