@@ -60,11 +60,11 @@ function CommentItem({ item }) {
                             <div className='pl-2 whitespace-pre-line'>{comment}</div>
                             <div className='flex items-center w-full pt-2 space-x-4'>
                                 <div><CommentVote upvotes={upvotes} downvotes={downvotes} /></div>
-                                <div className='flex items-center text-gray-reddit font-bold rounded hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit cursor-pointer'>
+                                <div className='flex items-center text-gray-reddit font-bold rounded hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit cursor-pointer p-1'>
                                     <ChatBubbleLeftIcon className='w-6 h-6' />
                                     <span className='pl-1 text-xs'>Reply</span>
                                 </div>
-                                <div className='flex items-center text-gray-reddit font-bold rounded hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit cursor-pointer'>
+                                <div className='flex items-center text-gray-reddit font-bold rounded hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit cursor-pointer p-1'>
                                     <span className='pl-1 text-xs'>Share</span>
                                 </div>
                                 <div className='text-gray-reddit rounded hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit cursor-pointer'

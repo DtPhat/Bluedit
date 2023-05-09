@@ -1,7 +1,7 @@
 export const UpvoteIcon = ({ active }) => {
   return (
     <svg
-      className={`${active ? "text-orange-600" : "text-gray-reddit"} w-7 p-0.5 hover:bg-graywhite-reddit dark:hover:bg-grayblack-reddit cursor-pointer`}
+      className={`${active ? "text-orange-600" : "text-gray-reddit"} w-7 p-0.5 hover:bg-gray-200 dark:hover:bg-grayblack-reddit cursor-pointer`}
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
       viewBox='0 0 24 24'

@@ -26,7 +26,7 @@ function Vote({ upvotes, downvotes }) {
         setDownvoted(true)
     }
     return (
-        <div className={`flex flex-col w-10 items-center pt-2 rounded ${router.pathname === '/' ? 'bg-graywhite-reddit dark:bg-black2-reddit' : ''}`}>
+        <div className={`flex flex-col w-10 items-center pt-2 rounded ${router.pathname === '/' ? 'bg-graywhite2-reddit dark:bg-black2-reddit' : ''}`}>
             <div onClick={upvote}>
                 <UpvoteIcon active={upvoted} />
             </div>
