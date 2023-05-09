@@ -27,7 +27,7 @@ export default function Header() {
     }, [])
     const { theme } = useTheme();
     return (
-        <div className='fixed inset:0 z-10 w-full flex h-13 p-1 px-3 space-x-3 items-center bg-white-reddit dark:bg-black-reddit dark:text-white-reddit border-b dark:border-grayblack-reddit'>
+        <div className='fixed inset:0 z-50 w-full flex h-13 p-1 px-3 space-x-3 items-center bg-white-reddit dark:bg-black-reddit dark:text-white-reddit border-b dark:border-grayblack-reddit'>
             <Link href='/'>
                 <div className='flex space-x-2 min-w-[2rem]'>
                     <img className='w-[2rem]' src='/reddit-icon.svg' width={33} height={33} alt='icon' />

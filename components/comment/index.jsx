@@ -22,6 +22,7 @@ function CommentSection({ postId }) {
                 .from('comments')
                 .select('*, users(profileImage)')
                 .match({ post_id: postId })
+                .order("comment_id")
             setCommentList(data)
         } catch (error) {
             console.log(error);
